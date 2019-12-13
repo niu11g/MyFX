@@ -1,0 +1,41 @@
+/* components/hot-list/index.wxss */
+/*app.wxss里的样式是无法直接运用到自定义组件中的*/
+@import "../../wxss/sleeve.wxss";
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-top: 40rpx;
+    background-color: #FFFFFF;
+}
+
+.title{
+    width:690rpx;
+    height:90rpx;
+}
+
+.inner-container{
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    justify-content: space-between;
+}
+
+.right-container{
+    display:flex;
+    flex-direction:column;
+    /* 容器之间留有空白 */
+    justify-content: space-between;
+}
+
+.left{
+    display: flex;
+    width:346rpx;
+    height: 522rpx;
+}
+
+.right-size{
+    width:400rpx;
+    height:260rpx;
+    display: flex;
+}

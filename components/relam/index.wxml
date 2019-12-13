@@ -1,0 +1,2 @@
+<!--components/relam/index.wxml-->
+<text>{{spu.id}}</text>

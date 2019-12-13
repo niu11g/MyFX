@@ -1,0 +1,4 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+    <s-relam spu="{{spu}}"></s-relam>
+</view>

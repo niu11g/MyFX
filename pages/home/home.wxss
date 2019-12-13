@@ -1,0 +1,40 @@
+/* pages/home/home.wxss */
+/* .container{
+    background-color: #000000;
+} */
+
+Page{
+  background-color: #f5f5f5;
+}
+
+.top-theme {
+     width: 100%;
+     display: flex; 
+}
+/*Swiper与Swiper img同样需要设置此样式 插槽*/
+.swipe{
+    width: 100%;
+}
+
+.activity{
+    margin-top:20rpx;
+    width:100%;
+    display: flex;
+    margin-bottom:20rpx;
+}
+
+.spu-bottom{
+    margin-top:20rpx;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-top: 30rpx;
+    background-color: #ffffff;
+}
+
+.img-spu-bottom{
+    width:690rpx;
+    height: 70rpx;
+    margin-bottom: 38rpx;
+
+}

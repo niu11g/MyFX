@@ -1,0 +1,53 @@
+/* components/spu-scroll/index.wxss */
+.container{
+  box-sizing: border-box; 
+  width: 100%; 
+  padding: 42rpx 0 34rpx 28rpx;
+  /* background-color: white; */
+}
+
+.title{
+  width:692rpx;
+  height:90rpx;
+}
+
+.price-unit{
+  /* important 设置样式优先级 */
+  font-size: 24rpx !important;
+  color: #157658 !important;
+}
+
+.price-value{
+   font-size: 32rpx !important;
+   color: #157658 !important;
+}
+
+.img-spu{
+  width:160rpx;
+  height: 160rpx;
+}
+
+.image-view{
+  margin-right:40rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-view{
+  margin:28rpx 20rpx 0 0;
+}
+
+.spu-view{
+  display: flex;
+  flex-direction: row;
+}
+
+.spu-text{
+  font-size: 20rpx;
+  color: #666666;
+  margin-top: 20rpx;
+}
+
+.discount-price{
+    margin-left: 20rpx;
+}

@@ -1,0 +1,35 @@
+<l-loadmore show end-text="- 全部加载完毕 -" type="{{loadingType}}">
+
+  <view slot="content" class="container">
+    <image data-id="themeA" style="width:750rpx;height:{{750/scales['themeA'].scale}}rpx" src="{{themeA.entrance_img}}" bindload="onTap"></image>
+
+    <swiper class="swipe" indicator-dots="{{true}}" indicator-active-color="#157658" autoplay circular>
+      <block wx:for="{{bannerB.items}}" wx:for-item="item" wx:key="{{index}}">
+        <swiper-item>
+          <image class="swipe" mode="widthFix" src="{{item.img}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--    抽象节点必须使用自定义组件。slot不需要 直接page就能调用-->
+    <s-category-grid grid="{{grid}}"></s-category-grid>
+
+    <image class="activity" mode="widthFix" src="{{activityD.entrance_img}}"></image>
+    <s-spu-scroll theme="{{themeE}}" spu-list="{{themeESpu}}" wx:if="{{themeE.online}}">
+    </s-spu-scroll>
+
+    <image data-id="themeF" style="width:750rpx;height:{{750/scales['themeF'].scale}}rpx" src="{{themeF.entrance_img}}" bindload="onTap"></image>
+
+
+    <s-host-list hot-list="{{bannerG}}">
+    </s-host-list>
+
+    <image data-id="themeH" style="width:750rpx;height:{{750/scales['themeH'].scale}}rpx;margin-top:20rpx" src="{{themeH.entrance_img}}" bindload="onTap"></image>
+
+
+    <view class="spu-bottom">
+      <image class="img-spu-bottom" src="/imgs/home/title.jpg"></image>
+      <l-water-flow generic:l-water-flow-item="s-spu-preview"></l-water-flow>
+    </view>
+
+  </view>
+</l-loadmore>

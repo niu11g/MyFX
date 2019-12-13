@@ -1,0 +1,34 @@
+
+function mainPrice(price,discountPrice){
+  if (!discountPrice){
+    return {
+      price:price,
+      display:true
+    }
+  }else{
+    return {
+      price: discountPrice,
+      display: true
+    }
+  }
+}
+
+function dashPrice(price, discountPrice){
+  console.log(discountPrice)
+  //如果打折价格存在，即不为空
+  if (discountPrice){
+    return {
+      price: price,
+      display: true
+    }
+  }else{
+    return {
+      display: false
+    }
+  }
+}
+
+module.exports = {
+  mainPrice:mainPrice,
+  dashPrice:dashPrice
+};

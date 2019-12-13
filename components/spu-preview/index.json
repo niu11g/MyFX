@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-card": "/miniprogram_npm/lin-ui/card/index",
+    "l-price": "/miniprogram_npm/lin-ui/price/index"
+  }
+}
