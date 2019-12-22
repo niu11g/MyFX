@@ -10,6 +10,7 @@ Component({
   observers:{
     'hotList':function(hotList){
       if(!hotList){
+
         return;
       }
       if(hotList.items.length === 0){
