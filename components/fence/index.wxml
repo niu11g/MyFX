@@ -1,2 +1,5 @@
 <!--components/fence/index.wxml-->
-<text>components/fence/index.wxml</text>
+<view class="container">
+    <view class="title"></view>
+    <view></view>
+</view>
