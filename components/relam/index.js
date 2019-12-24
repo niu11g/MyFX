@@ -7,6 +7,13 @@ Component({
     spu:Object
 
   },
+  //自定义组件的生命周期
+  /*lifetimes:{
+    attached(){
+
+    }
+  },*/
+  //监听器
   observers:{
     'spu':function(spu){
        if(!spu){
@@ -14,9 +21,6 @@ Component({
        }
     }
   },
-
-  
-
   /**
    * 组件的初始数据
    */
