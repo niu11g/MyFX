@@ -21,7 +21,8 @@ Component({
        if(!spu){
          return;
        }
-      new FenceGroup(spu);
+       const fenceGroup = new FenceGroup(spu);
+       fenceGroup.initFences();
     }
   },
   /**
