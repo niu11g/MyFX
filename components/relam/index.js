@@ -1,4 +1,6 @@
 // components/relam/index.js
+import {FenceGroup} from "../models/fence-group";
+
 Component({
   /**
    * 组件的属性列表
@@ -19,6 +21,7 @@ Component({
        if(!spu){
          return;
        }
+      new FenceGroup(spu);
     }
   },
   /**

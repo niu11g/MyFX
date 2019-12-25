@@ -16,7 +16,7 @@ Page({
   onLoad: async function (options) {
     const pid = options.pid;
     const spu = await Spu.getSpuById(pid);
-    console.log(spu)
+    // console.log(spu)
     this.setData({
       spu
     })
