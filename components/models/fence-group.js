@@ -4,6 +4,7 @@ import {Fence} from "./fence";
 class FenceGroup{
     spu
     skuList = []
+    fences
     constructor(spu) {
         this.spu = spu
         this.skuList = spu.sku_list
@@ -12,13 +13,13 @@ class FenceGroup{
         const matrix = this._createMatrix(this.skuList)
         const fences = []
         let currentJ = -1;
-        matrix.forEach((element,i,j)=>{
+        matrix.each((element,i,j)=>{
             if(currentJ !== j){
                 //开启一个新列，需要创建一个新的Fence
                 currentJ = j
                 fences[currentJ] = this._createFence(element)
             }
-            fences[currentJ].pushValueTitle(element.value)
+            // fences[currentJ].pushValueTitle(element.value)
         })
         console.log(fences);
     }
@@ -31,6 +32,7 @@ class FenceGroup{
             fence.init()
             fences.push(fence)
         })
+        this.fences = fences
         console.log(fences)
     }
     _createFence(element){

@@ -16,7 +16,7 @@ class Matrix{
     // 比如：[[{key_id:1,key_value:颜色，value_id:1,value:白},{}...],[{key_id:1,key_value:颜色，value_id:2,value:黑},{},{}],[{}],[{}]...]
     //找出相等key_id的组合并重新排列，结果为[[{key_id:1,key_value:颜色，value_id:1,value:白},{key_id:1,key_value:颜色，value_id:2,value:黑},{}.],[],[]...]
 
-   forEach(cb){
+   each(cb){
         for(let j = 0;j < this.colsNum; j++){
             for(let i = 0;i < this.rowsNum;i++){
                    const element = this.m[i][j]
