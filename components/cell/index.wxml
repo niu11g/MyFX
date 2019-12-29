@@ -1,0 +1,6 @@
+<!--components/cell/index.wxml-->
+<view class="container">
+    <view class="inner-container">
+        <text>{{cell.title}}</text>
+    </view>
+</view>
