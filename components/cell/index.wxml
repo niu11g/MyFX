@@ -1,6 +1,6 @@
 <!--components/cell/index.wxml-->
-<view class="container">
-    <view class="inner-container">
+<view bind:tap="onTap" class="container s-outer">
+    <view class="inner-container s-inner">
         <text>{{cell.title}}</text>
     </view>
 </view>
