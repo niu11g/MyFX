@@ -1,6 +1,25 @@
 <!--components/cell/index.wxml-->
-<view bind:tap="onTap" class="container s-outer">
-    <view class="inner-container s-inner">
+<view bind:tap="onTap" class="container {{c.statusStyle(cell.status).outer}}">
+    <view class="inner-container {{c.statusStyle(cell.status).inner}}">
         <text>{{cell.title}}</text>
     </view>
 </view>
+
+<wxs module="c">
+    function statusStyle(status){
+        status = 'forbidden'
+        if(status === 'forbidden'){
+            return {
+                outer:'forbidden',
+                inner:'s-inner'
+            }
+        }
+        if(status === 'selected'){
+            return {
+               outer:'s-outer',
+               inner:'s-inner'
+            }
+        }
+    }
+    module.exports.statusStyle = statusStyle
+</wxs>
