@@ -23,7 +23,12 @@ Component({
   methods: {
     onTap(event){
       this.triggerEvent('celltap',{
+        cell:this.properties.cell
 
+      },{
+        //捕捉cell的自定义事件
+        bubbles:true,
+        composed:true
       })
     }
   }
