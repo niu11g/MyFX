@@ -7,7 +7,9 @@ Component({
    */
 
   properties: {
-    cell:Object
+    cell:Object,
+    y:Number,
+    x:Number
   },
 
   /**
@@ -23,7 +25,9 @@ Component({
   methods: {
     onTap(event){
       this.triggerEvent('celltap',{
-        cell:this.properties.cell
+        cell:this.properties.cell,
+        x:this.properties.x,
+        y:this.properties.y
 
       },{
         //捕捉cell的自定义事件

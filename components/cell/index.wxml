@@ -1,5 +1,5 @@
 <!--components/cell/index.wxml-->
-<view bind:tap="onTap" class="container {{c.statusStyle(cell.status).outer}}">
+<view  bind:tap="onTap" class="container {{c.statusStyle(cell.status).outer}}">
     <view class="inner-container {{c.statusStyle(cell.status).inner}}">
         <text>{{cell.title}}</text>
     </view>

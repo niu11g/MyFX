@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    fence:Object
+    fence:Object,
+    x:Number
   },
 
   /**
@@ -18,6 +19,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+      onCellTap(event) {
+        this.triggerEvent('celltap',{
+          cell:event.detail.cell,
+          y:event.currentTarget.dataset.y,
+        },{
+          bubbles:true,
+          composed:true
+        })
+      }
   }
 })
