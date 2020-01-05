@@ -31,7 +31,21 @@ class Judger{
       this.fenceGroup.eachCell((cell,x,y)=>{
         const path = this._findPotentialPath(cell, x, y)
         console.log(path)
+        if(!path){
+          return
+        }
+        const isIn = this._isInDict(path)
+        if(isIn){
+          this.fenceGroup.fences[x].cells[y].status=CellStatus.WAITING
+        }
+        else{
+          this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
+        }
       })
+    }
+
+    _isInDict(path){
+      return this.pathDict.includes(path)
     }
 
     // _changeOtherCellStatus(cell,x,y){
@@ -44,17 +58,16 @@ class Judger{
       for(let i = 0;i<this.fenceGroup.fences.length;i++){
         const select = this.skuPending.findSelectedCellByX(i)
           if(x === i){
+            if(this.skuPending.isSelected(cell,x)){
+              return
+            }
             //如果是当前行,把选择的cell加入潜在路径里
             // const cell = new Cell(cell.spec)
-            const cellCode = ((cell)=>{
-              return cell.spec.key_id + '-' +spec.value_id
-            });
+            const cellCode = this._getCellCode(cell.spec)
             joiner.join(cellCode)
           }else{
             if (select){
-              const selectedCellCode = ((select) => {
-                return select.spec.key_id + '-' + select.spec.value_id
-              });
+              const selectedCellCode = this._getCellCode(select.spec)
               joiner.join(selectedCellCode)
 
             }
@@ -64,9 +77,9 @@ class Judger{
         
     }
 
-    // _getCellCode(spec){
-    //   return spec.key_id + '-' +spec.value_id
-    // }
+    _getCellCode(spec){
+      return spec.key_id + '-' +spec.value_id
+    }
 
     _changeCurrentCellStatus(cell,x,y){
         if(cell.status === CellStatus.WAITING){
@@ -76,7 +89,7 @@ class Judger{
         }
         if(cell.status === CellStatus.SELECTED){
             this.fenceGroup.fences[x].cells[y].status=CellStatus.WAITING
-            this.skuPending.removeCell(cell, x)
+            this.skuPending.removeCell(x)
         }
 
     }

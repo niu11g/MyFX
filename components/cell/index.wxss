@@ -29,9 +29,9 @@
 }
 
 .s-inner{
-    background-color: #157658;
+    background-color:  #ffffff;
 }
 
 .selected{
-
+    background-color: #157658;
 }

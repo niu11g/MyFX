@@ -1,5 +1,5 @@
 
-import {Http} from "../utils/Http";
+import {Http} from "../utils/http";
 
 class Activity {
     static locationD = 'a-2'

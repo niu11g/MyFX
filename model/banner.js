@@ -1,4 +1,4 @@
-import {Http} from "../utils/Http";
+import {Http} from "../utils/http";
 
 class Banner {
     static locationB = 'b-1'

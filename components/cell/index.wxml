@@ -16,7 +16,7 @@
         if(status === 'selected'){
             return {
                outer:'s-outer',
-               inner:'s-inner'
+               inner:'selected'
             }
         }
     }

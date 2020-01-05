@@ -1,4 +1,4 @@
-import {Http} from "../utils/Http";
+import {Http} from "../utils/http";
 
 class Theme {
     static locationA = 't-1'
