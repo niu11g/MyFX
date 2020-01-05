@@ -19,10 +19,15 @@ class Judger{
     }
 
     judge(cell,x,y){
-        this._changeCellStatus(cell,x,y)
+      this._changeCurrentCellStatus(cell,x,y)
+      this.fenceGroup.eachCell(this._changeOtherCellStatus)
     }
 
-    _changeCellStatus(cell,x,y){
+    _changeOtherCellStatus(cell,x,y){
+
+    }
+
+    _changeCurrentCellStatus(cell,x,y){
         if(cell.status === CellStatus.WAITING){
             // cell.status = CellStatus.SELECTED
             this.fenceGroup.fences[x].cells[y].status=CellStatus.SELECTED
