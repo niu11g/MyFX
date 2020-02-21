@@ -15,9 +15,21 @@ class Judger{
 
     _initSkuPending(){
       this.skuPending = new SkuPending()
-
+        const defaultSku = this.fenceGroup.getDefaultSku()
+        if(!defaultSku){
+            return
+        }
+        this.skuPending.init(defaultSku)
+        this._initSelectedCell()
+        this.judge(null,null,null,true);
+        console.log(this.skuPending)
     }
 
+    _initSelectedCell(){
+        this.skuPending.pending.forEach(cell=>
+            this.fenceGroup.setCellStatusById(cell.id,CellStatus.SELECTED)
+        )
+    }
     initPathDict(){
         this.fenceGroup.spu.sku_list.forEach(s=>{
             const skuCode = new SkuCode(s.code)
@@ -26,22 +38,25 @@ class Judger{
         console.log(this.pathDict)
     }
 
-    judge(cell,x,y){
-      this._changeCurrentCellStatus(cell,x,y)
-      this.fenceGroup.eachCell((cell,x,y)=>{
-        const path = this._findPotentialPath(cell, x, y)
-        console.log(path)
-        if(!path){
-          return
+    judge(cell,x,y,isInit=false){
+        if(!isInit){
+            this._changeCurrentCellStatus(cell,x,y)
         }
-        const isIn = this._isInDict(path)
-        if(isIn){
-          this.fenceGroup.fences[x].cells[y].status=CellStatus.WAITING
-        }
-        else{
-          this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
-        }
-      })
+        this.fenceGroup.eachCell((cell,x,y)=>{
+            const path = this._findPotentialPath(cell, x, y)
+            console.log(path)
+            if(!path){
+              return
+            }
+            const isIn = this._isInDict(path)
+            if(isIn){
+                this.fenceGroup.setCelStatusByXY(x,y,CellStatus.WAITING)
+            }
+            else{
+                this.fenceGroup.setCelStatusByXY(x,y,CellStatus.FORBIDDEN)
+                // this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
+            }
+        })
     }
 
     _isInDict(path){
@@ -74,7 +89,7 @@ class Judger{
           }
       }
       return joiner.getStr()
-        
+
     }
 
     _getCellCode(spec){
@@ -84,11 +99,12 @@ class Judger{
     _changeCurrentCellStatus(cell,x,y){
         if(cell.status === CellStatus.WAITING){
             // cell.status = CellStatus.SELECTED
-            this.fenceGroup.fences[x].cells[y].status=CellStatus.SELECTED
+            this.fenceGroup.setCelStatusByXY(x,y,CellStatus.SELECTED)
+            // this.fenceGroup.fences[x].cells[y].status=CellStatus.SELECTED
             this.skuPending.insertCell(cell,x)
         }
         if(cell.status === CellStatus.SELECTED){
-            this.fenceGroup.fences[x].cells[y].status=CellStatus.WAITING
+            this.fenceGroup.setCelStatusByXY(x,y,CellStatus.WAITING)
             this.skuPending.removeCell(x)
         }
 
