@@ -1,5 +1,3 @@
-<wxs src="../../wxs/price.wxs" module="p"></wxs>
-
 <view class="container">
     <view class="sku-preview">
         <image src="{{previewImg}}" class="sku-img"></image>
@@ -18,9 +16,14 @@
                              value-size="26"
                              value="{{p.slashedPrice(price,discountPrice).price}}"
                              l-class="discount-price"></l-price>
+                    <view wx:if="{{stock && stock >= 10}}" class="stock">库存:{{stock}}件</view>
+                    <view wx:if="{{stock && stock < 10 && stock != 0}}" class="stock-pinch">仅剩:{{stock}}件</view>
                 </view>
-                <view class="sku-pending">
-                    <text>请选择：</text>
+                <view wx:if="{{!noSpec}}" class="sku-pending">
+<!--                    <text wx:if="{{skuIntact}}">请选择：</text>-->
+<!--                    <text wx:else>已选：</text>-->
+<!--                    <text wx:if="{{skuIntact}}">{{待选择规格名}}</text>-->
+<!--                    <text wx:else>{{已选规格值}}</text>-->
                 </view>
             </view>
         </view>
