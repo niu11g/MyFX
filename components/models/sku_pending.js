@@ -15,6 +15,21 @@ class SkuPending{
            this.insertCell(cell,i)
        }
    }
+   getCurrentSpecValues(){
+       const values = this.pending.map(cell=>{
+           return cell ? cell.spec.value : null
+       })
+       return values
+   }
+   getMissingSpecKeys(){
+       const keysIndex = []
+       for (let i = 0;i < this.size;i++){
+           if(!this.pending[i]){
+               keysIndex.push(i)
+           }
+       }
+       return keysIndex;
+   }
    getSkuCode(){
        const joiner = new Joiner('#')
        this.pending.forEach(cell=>{

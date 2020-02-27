@@ -92,7 +92,9 @@ Component({
       },
       bindTipData(){
          this.setData({
-           skuIntact:this.data.judge.isSkuIntact()
+           skuIntact:this.data.judge.isSkuIntact(),
+           currentValues:this.data.judge.getCurrentValues(),
+           missingKeys:this.data.judge.getMissingKeys()
          })
       },
       bindFenceGroupData(fenceGroup) {
@@ -106,7 +108,7 @@ Component({
           const y = event.detail.y
 
           const cell = new Cell(data.spec)
-
+          cell.status = data.status
           console.log(event.detail)
           const judge = this.data.judge
           judge.judge(cell,x,y)

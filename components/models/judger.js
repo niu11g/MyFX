@@ -22,6 +22,15 @@ class Judger{
            console.log("调用skuintact")
            return this.skuPending.isIntact()
     }
+    getMissingKeys(){
+        const missingKeysIndex = this.skuPending.getMissingSpecKeys()
+        return missingKeysIndex.map(i=>{
+            return this.fenceGroup.fences[i].title
+        })
+    }
+    getCurrentValues(){
+        return this.skuPending.getCurrentSpecValues()
+    }
 
     _initSkuPending(){
         const specsLength = this.fenceGroup.fences.length

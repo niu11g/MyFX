@@ -22,9 +22,9 @@
                 </view>
                 <view wx:if="{{!noSpec}}" class="sku-pending">
                         <text wx:if="{{!skuIntact}}">请选择：</text>
-                        <text wx:else>已选：</text>
-                    <text wx:if="{{!skuIntact}}">{{1}}</text>
-                    <text wx:else>{{2}}</text>
+                        <text wx:else>已选:</text>
+                    <text wx:if="{{!skuIntact}}">{{missingKeys}}</text>
+                    <text wx:else>{{currentValues}}</text>
                 </view>
             </view>
         </view>
