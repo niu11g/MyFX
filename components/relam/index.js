@@ -2,6 +2,7 @@
 import {FenceGroup} from "../models/fence-group";
 import {Judger} from "../models/judger";
 import {Spu} from "../../model/spu";
+import {Cell} from "../models/cell";
 
 Component({
   /**
@@ -46,7 +47,7 @@ Component({
       processNoSpec(spu){
           this.setData({
               noSpec:true,
-              skuIntact:true
+              // skuIntact:true
           })
           this.bindSkuData(spu.sku_list[0])
       },
@@ -66,6 +67,7 @@ Component({
           else{
               this.bindSpuData()
           }
+          this.bindTipData()
           console.log(this.skuIntact)
           this.bindFenceGroupData(fenceGroup)
       },
@@ -75,20 +77,23 @@ Component({
               previewImg:spu.img,
               title:spu.title,
               price:spu.price,
-              discountPrice:spu.discount_price,
-              skuIntact:this.data.judge.isSkuIntact()
+              discountPrice:spu.discount_price
           })
       },
       bindSkuData(sku){
-          console.log("judger"+this.data)
+          console.log("judger-sku" + sku.discount_price)
           this.setData({
               previewImg:sku.img,
               title:sku.title,
               price:sku.price,
               discountPrice:sku.discount_price,
-              stock:sku.stock,
-              // skuIntact:this.data.judge.isSkuIntact()
+              stock:sku.stock
           })
+      },
+      bindTipData(){
+         this.setData({
+           skuIntact:this.data.judge.isSkuIntact()
+         })
       },
       bindFenceGroupData(fenceGroup) {
           this.setData({
@@ -96,15 +101,24 @@ Component({
           })
       },
       onCellTap(event){
-          const cell = event.detail.cell
+          const data = event.detail.cell
           const x = event.detail.x
           const y = event.detail.y
+
+          const cell = new Cell(data.spec)
+
           console.log(event.detail)
           const judge = this.data.judge
           judge.judge(cell,x,y)
-          this.setData({
-              fences:judge.fenceGroup.fences
-          })
+          const skuIntact = judge.isSkuIntact()
+          console.log("skuIntact"+skuIntact);
+          if(skuIntact){
+              const currentSku = judge.getDeterminateSku()
+              console.log("currentSku"+currentSku)
+              this.bindSkuData(currentSku)
+          }
+          this.bindTipData()
+          this.bindFenceGroupData(judge.fenceGroup)
       }
   }
 })

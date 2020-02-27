@@ -1,3 +1,4 @@
+<wxs src='../../wxs/price.wxs' module="p"/>
 <view class="container">
     <view class="sku-preview">
         <image src="{{previewImg}}" class="sku-img"></image>
@@ -11,19 +12,19 @@
                             value-size="28"
                             autofix></l-price>
                     <l-price deleted
-                             wx:if="{{p.slashedPrice(price,discountPrice).display}}"
+                             wx:if="{{p.dashPrice(price,discountPrice).display}}"
                              color="#999999"
                              value-size="26"
-                             value="{{p.slashedPrice(price,discountPrice).price}}"
+                             value="{{p.dashPrice(price,discountPrice).price}}"
                              l-class="discount-price"></l-price>
-                    <view wx:if="{{stock && stock >= 10}}" class="stock">库存:{{stock}}件</view>
+                    <view wx:if="{{stock && stock >= 10}}" class="stock">库存:{{stock}}</view>
                     <view wx:if="{{stock && stock < 10 && stock != 0}}" class="stock-pinch">仅剩:{{stock}}件</view>
                 </view>
                 <view wx:if="{{!noSpec}}" class="sku-pending">
-<!--                    <text wx:if="{{skuIntact}}">请选择：</text>-->
-<!--                    <text wx:else>已选：</text>-->
-<!--                    <text wx:if="{{skuIntact}}">{{待选择规格名}}</text>-->
-<!--                    <text wx:else>{{已选规格值}}</text>-->
+                        <text wx:if="{{!skuIntact}}">请选择：</text>
+                        <text wx:else>已选：</text>
+                    <text wx:if="{{!skuIntact}}">{{1}}</text>
+                    <text wx:else>{{2}}</text>
                 </view>
             </view>
         </view>

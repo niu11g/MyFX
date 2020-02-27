@@ -1,4 +1,5 @@
 import {Cell} from "./cell";
+import {Joiner} from "../../utils/joiner";
 
 class SkuPending{
    pending = []
@@ -14,7 +15,15 @@ class SkuPending{
            this.insertCell(cell,i)
        }
    }
+   getSkuCode(){
+       const joiner = new Joiner('#')
+       this.pending.forEach(cell=>{
+           const cellCode = cell.getCellCode()
+           joiner.join(cellCode)
 
+       })
+       return joiner.getStr()
+   }
    isIntact(){
       // if(this.size !== this.pending.length){
       //     return false

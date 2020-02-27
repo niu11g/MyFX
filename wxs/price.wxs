@@ -14,7 +14,6 @@ function mainPrice(price,discountPrice){
 }
 
 function dashPrice(price, discountPrice){
-  console.log(discountPrice)
   //如果打折价格存在，即不为空
   if (discountPrice){
     return {

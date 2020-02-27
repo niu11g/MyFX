@@ -13,6 +13,11 @@ class Judger{
         this._initSkuPending()
     }
 
+    getDeterminateSku(){
+        const code = this.skuPending.getSkuCode()
+        const sku = this.fenceGroup.getSku(code)
+        return sku
+    }
     isSkuIntact(){
            console.log("调用skuintact")
            return this.skuPending.isIntact()
