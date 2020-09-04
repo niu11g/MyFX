@@ -1,5 +1,5 @@
 const config={
-    appkey:'ugro5A4BC42H942k',
+    appkey:'k02l929SV2KpSNoZ',
     apiBaseUrl:'http://se.7yue.pro/v1/'
     // apiBaseUrl:'http://localhost:8081/V1/'
 }

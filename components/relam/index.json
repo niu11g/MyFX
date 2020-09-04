@@ -1,7 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "s-fence": "../components/fence/index",
-    "l-counter": "../miniprogram_npm/lin-ui/counter/index"
+    "s-fence": "/components/fence/index",
+    "l-counter": "/miniprogram_npm/lin-ui/counter/index"
   }
 }
