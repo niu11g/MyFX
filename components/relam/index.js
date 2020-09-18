@@ -1,6 +1,7 @@
 // components/relam/index.js
 import {FenceGroup} from "../models/fence-group";
 import {Judger} from "../models/judger";
+import {Cart} from '../../model/cart'
 import {Spu} from "../../model/spu";
 import {Cell} from "../models/cell";
 
@@ -37,7 +38,8 @@ Component({
    */
   data: {
       judge:Object,
-      previewImg:String
+      previewImg:String,
+      currentSkuCount:Cart.SKU_MIN_COUNT
   },
 
   /**
@@ -63,6 +65,7 @@ Component({
           const defaultSku = fenceGroup.getDefaultSku()
           if(defaultSku){
               this.bindSkuData(defaultSku)
+              this.setStockStatus(defaultSku.stock,this.data.currentSkuCount);
           }
           else{
               this.bindSpuData()
@@ -102,6 +105,23 @@ Component({
               fences: fenceGroup.fences
           })
       },
+      setStockStatus(stock,currentCount){   
+          this.setData({
+              outStock:this.isOutOfStock(stock,currentCount)
+          })
+      },
+      isOutOfStock(stock,currentCount){
+          return stock < currentCount;
+      },
+      onSelectCount(event){
+          const currentCount = event.detail.count;
+          console.log("currentCount"+currentCount);
+          this.data.currentSkuCount = currentCount
+          if(this.data.judge.isSkuIntact()){
+              const sku = this.data.judge.getDeterminateSku()
+              this.setStockStatus(sku.stock,currentCount)
+          }
+      },
       onCellTap(event){
           const data = event.detail.cell
           const x = event.detail.x
@@ -118,6 +138,7 @@ Component({
               const currentSku = judge.getDeterminateSku()
               console.log("currentSku"+currentSku)
               this.bindSkuData(currentSku)
+              this.setStockStatus(currentSku.stock,this.data.currentSkuCount)
           }
           this.bindTipData()
           this.bindFenceGroupData(judge.fenceGroup)
