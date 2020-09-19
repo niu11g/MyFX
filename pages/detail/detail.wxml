@@ -1,4 +1,9 @@
 <!--pages/detail/detail.wxml-->
-<view class="container">
-    <s-relam spu="{{spu}}"></s-relam>
-</view>
+<!--<view class="container">-->
+<!--    <s-relam spu="{{spu}}"></s-relam>-->
+<!--</view>-->
+<s-tabbar></s-tabbar>
+
+<!--<l-icon name="home" l-class="sleeve"></l-icon>-->
+
+<!--<l-icon name="radio" l-class="sleeve"></l-icon>-->

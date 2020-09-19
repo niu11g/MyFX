@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "components/tab-bar/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,8 +18,10 @@
     "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
     "l-price": "/miniprogram_npm/lin-ui/price/index",
     "l-tag": "/miniprogram_npm/lin-ui/tag/index",
-    "l-counter":"/miniprogram_npm/lin-ui/counter/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-counter": "/miniprogram_npm/lin-ui/counter/index",
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
-    "s-counter":"/components/counter/index"
+    "s-counter": "/components/counter/index",
+    "l-badge": "/miniprogram_npm/lin-ui/badge/index"
   }
 }

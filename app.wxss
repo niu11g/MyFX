@@ -2,3 +2,33 @@
 Page{
   background-color: #f5f5f5;
 }
+
+/*每次图标库中新添加图标后，都需重新生成代码，否则新加图标不生效*/
+@font-face {
+  font-family: 'MyFx';  /* project id 2079236 */
+  src: url('//at.alicdn.com/t/font_2079236_avzd0byycz.eot');
+  src: url('//at.alicdn.com/t/font_2079236_avzd0byycz.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2079236_avzd0byycz.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2079236_avzd0byycz.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2079236_avzd0byycz.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2079236_avzd0byycz.svg#MyFx') format('svg');
+}
+
+
+.sleeve{
+  font-family: MyFx !important;
+  color: #157658 !important;
+}
+
+.l-icon-home:before{
+  content: "\e652"
+}
+
+.l-icon-radio:before{
+  content: "\e617"
+}
+/*定义名为cart不生效*/
+.l-icon-lcart:before{
+  content: "\e60c";
+}
+

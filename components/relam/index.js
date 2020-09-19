@@ -52,6 +52,7 @@ Component({
               // skuIntact:true
           })
           this.bindSkuData(spu.sku_list[0])
+          this.setStockStatus(spu.sku_list[0].stock,this.data.currentSkuCount);
       },
       processHasSpec(spu){
           const fenceGroup = new FenceGroup(spu);

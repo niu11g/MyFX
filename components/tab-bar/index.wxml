@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="icons">
+      <view bind:tap="onGoToHome">
+          <l-icon name="home" size="46" l-class="sleeve"></l-icon>
+          <text>首页</text>
+      </view>
+      <view bind:tap="onGoToCart">
+          <l-badge>
+            <l-icon  name="lcart" size="42" l-class="sleeve"></l-icon>
+          </l-badge>
+          <text>购物车</text>
+      </view>
+    </view>
+    <view bind:tap="onAddToCart" class="cart btn-font">
+      <text>加入购物车</text>
+    </view>
+    <view bind:tap="onBuy" class="buy btn-font">立即购买</view>
+</view>
