@@ -1,9 +1,17 @@
 <!--pages/detail/detail.wxml-->
-<!--<view class="container">-->
-<!--    <s-relam spu="{{spu}}"></s-relam>-->
-<!--</view>-->
-<s-tabbar></s-tabbar>
+<!-- <view class="container">
 
-<!--<l-icon name="home" l-class="sleeve"></l-icon>-->
+</view> -->
+  <l-popup content-align="bottom"  show="{{showRelam}}">
+    <s-relam order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
+  </l-popup>
+  <s-tabbar class="tabbar" bind:gotohome="onGotoHome"
+          bind:gotocart="onGotoCart"
+          bind:addtocart="onAddToCart"
+          bind:buy="onBuy">
+  </s-tabbar>
+
+
+<!-- <l-icon name="home" l-class="sleeve"></l-icon> -->
 
 <!--<l-icon name="radio" l-class="sleeve"></l-icon>-->

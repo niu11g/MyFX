@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "s-relam": "/components/relam/index",
-    "s-tabbar": "/components/tab-bar/index"
+    "s-tabbar":"/components/tab-bar/index"
   }
 }

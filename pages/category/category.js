@@ -1,50 +1,18 @@
-// pages/detail/detail.js
-import {Spu} from "../../model/spu";
-import {ShoppingWay} from "../../core/enum";
-
+// pages/category/category.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     spu:null,
-     showRelam:false
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function (options) {
-    const pid = options.pid;
-    const spu = await Spu.getSpuById(pid);
-    // console.log(spu)
-    this.setData({
-      spu
-    })
+  onLoad: function (options) {
 
-  },
-  onGotoHome(event){
-    wx.switchTab({
-      url:'/pages/home/home'
-    })
-  },
-  onGotoCart(event){
-    wx.switchTab({
-      url:'/pages/cart/cart'
-    })
-  },
-  onAddToCart:function(){
-    this.setData({
-      showRelam:true,
-      orderWay:ShoppingWay.CART
-    })
-  },
-  onBuy:function(){
-    this.setData({
-      showRelam:true,
-      orderWay:ShoppingWay.BUY
-    })
   },
 
   /**

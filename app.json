@@ -2,7 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/detail/detail",
-    "components/tab-bar/index"
+    "pages/cart/cart",
+    "pages/category/category",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,6 +12,37 @@
     "navigationBarTitleText": "风袖",
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 30
+  },
+  "tabBar": {
+    "borderStyle":"black",
+    "color":"#333333",
+    "selectedColor":"#333333",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/home",
+        "iconPath": "imgs/home/home@dis.png",
+        "selectedIconPath": "imgs/home/home.png"
+      },
+      {
+        "text": "分类",
+        "pagePath": "pages/category/category",
+        "iconPath": "imgs/home/category@dis.png",
+        "selectedIconPath": "imgs/home/category.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/cart/cart",
+        "iconPath": "imgs/home/cart@dis.png",
+        "selectedIconPath": "imgs/home/cart.png"
+      },
+      {
+        "text": "分类",
+        "pagePath": "pages/my/my",
+        "iconPath": "imgs/home/my@dis.png",
+        "selectedIconPath": "imgs/home/my.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
@@ -22,6 +55,7 @@
     "l-counter": "/miniprogram_npm/lin-ui/counter/index",
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
     "s-counter": "/components/counter/index",
-    "l-badge": "/miniprogram_npm/lin-ui/badge/index"
+    "l-badge": "/miniprogram_npm/lin-ui/badge/index",
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index"
   }
 }

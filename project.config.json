@@ -8,6 +8,7 @@
     "es6": true,
     "enhance": true,
     "postcss": true,
+    "preloadBackgroundData": false,
     "minified": true,
     "newFeature": true,
     "coverView": true,
@@ -15,9 +16,11 @@
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
+    "uglifyFileName": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
     "useMultiFrameRuntime": false,
     "useApiHook": false,
     "babelSetting": {
@@ -68,7 +71,14 @@
       "list": [
         {
           "id": 0,
-          "name": "pages/detail/detail",
+          "name": "无规格",
+          "pathName": "pages/detail/detail",
+          "query": "pid=11",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "有规格",
           "pathName": "pages/detail/detail",
           "query": "pid=2",
           "scene": null

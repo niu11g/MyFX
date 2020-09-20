@@ -10,7 +10,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    spu:Object
+    spu:Object,
+    orderWay:String
 
   },
   //自定义组件的生命周期
@@ -106,7 +107,7 @@ Component({
               fences: fenceGroup.fences
           })
       },
-      setStockStatus(stock,currentCount){   
+      setStockStatus(stock,currentCount){
           this.setData({
               outStock:this.isOutOfStock(stock,currentCount)
           })

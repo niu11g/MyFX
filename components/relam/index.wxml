@@ -1,47 +1,50 @@
 <wxs src='../../wxs/price.wxs' module="p"/>
-<view class="container">
-    <view class="sku-preview">
-        <image src="{{previewImg}}" class="sku-img"></image>
-        <view class="sku-description">
-            <text class="title">{{title}}</text>
-            <view>
-                <view class="price-row">
-                    <l-price
-                            value="{{p.mainPrice(price,discountPrice).price}}"
-                            color="#157658"
-                            value-size="28"
-                            autofix></l-price>
-                    <l-price deleted
-                             wx:if="{{p.dashPrice(price,discountPrice).display}}"
-                             color="#999999"
-                             value-size="26"
-                             value="{{p.dashPrice(price,discountPrice).price}}"
-                             l-class="discount-price"></l-price>
-                    <view wx:if="{{stock && stock >= 10}}" class="stock">库存:{{stock}}</view>
-                    <view wx:if="{{stock && stock < 10 && stock != 0}}" class="stock-pinch">仅剩:{{stock}}件</view>
-                </view>
-                <view wx:if="{{!noSpec}}" class="sku-pending">
-                        <text wx:if="{{!skuIntact}}">请选择：</text>
-                        <text wx:else>已选:</text>
-                    <text wx:if="{{!skuIntact}}">{{missingKeys}}</text>
-                    <text wx:else>{{currentValues}}</text>
+<scroll-view class="container" scroll-y>
+    <view class="inner-container">
+        <view class="sku-preview">
+            <image src="{{previewImg}}" class="sku-img"></image>
+            <view class="sku-description">
+                <text class="title">{{title}}</text>
+                <view>
+                    <view class="price-row">
+                        <l-price
+                                value="{{p.mainPrice(price,discountPrice).price}}"
+                                color="#157658"
+                                value-size="28"
+                                autofix></l-price>
+                        <l-price deleted
+                                 wx:if="{{p.dashPrice(price,discountPrice).display}}"
+                                 color="#999999"
+                                 value-size="26"
+                                 value="{{p.dashPrice(price,discountPrice).price}}"
+                                 l-class="discount-price"></l-price>
+                        <view wx:if="{{stock && stock >= 10}}" class="stock">库存:{{stock}}</view>
+                        <view wx:if="{{stock && stock < 10 && stock != 0}}" class="stock-pinch">仅剩:{{stock}}件</view>
+                    </view>
+                    <view wx:if="{{!noSpec}}" class="sku-pending">
+                            <text wx:if="{{!skuIntact}}">请选择：</text>
+                            <text wx:else>已选:</text>
+                        <text wx:if="{{!skuIntact}}">{{missingKeys}}</text>
+                        <text wx:else>{{currentValues}}</text>
+                    </view>
                 </view>
             </view>
         </view>
+
+        <view class="hr"></view>
+
+        <block wx:for="{{fences}}" wx:key="{{index}}">
+            <s-fence x="{{index}}" bind:celltap="onCellTap" fence="{{item}}"></s-fence>
+        </block>
+        <view class="counter-container">
+            <text>购买数量</text>
+            <s-counter bind:lintap="onSelectCount"></s-counter>
+        </view>
     </view>
-
-    <view class="hr"></view>
-
-    <block wx:for="{{fences}}" wx:key="{{index}}">
-        <s-fence x="{{index}}" bind:celltap="onCellTap" fence="{{item}}"></s-fence>
-    </block>
-    <view class="counter-container">
-        <text>购买数量</text>
-        <s-counter bind:lintap="onSelectCount"></s-counter>
-    </view>    
-</view>
+</scroll-view>
 <view wx:if="{{!outStock}}" class="bottom-btn">
-        <text>加入购物车</text>
+        <text wx:if="{{orderWay==='cart'}}">加入购物车</text>
+        <text wx:else>立即购买</text>
 </view>
 <view wx:else class="bottom-btn out-stock">
         <text>暂时缺货</text>

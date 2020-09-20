@@ -27,8 +27,8 @@ Page{
 .l-icon-radio:before{
   content: "\e617"
 }
-/*定义名为cart不生效*/
+/*定义名为cart不生效，原因：已是内部样式名*/
 .l-icon-lcart:before{
-  content: "\e60c";
+  content: "\e60c"
 }
 
