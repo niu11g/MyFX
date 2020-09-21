@@ -57,8 +57,7 @@ Component({
       },
       processHasSpec(spu){
           const fenceGroup = new FenceGroup(spu);
-          fenceGroup.initFences1();
-          console.log("fenceGroup"+fenceGroup)
+          fenceGroup.initFences();
           const jud = new Judger(fenceGroup)
           this.setData({
               judge:jud
@@ -73,7 +72,6 @@ Component({
               this.bindSpuData()
           }
           this.bindTipData()
-          console.log(this.skuIntact)
           this.bindFenceGroupData(fenceGroup)
       },
       bindSpuData(){
@@ -86,7 +84,7 @@ Component({
           })
       },
       bindSkuData(sku){
-          console.log("judger-sku" + sku.discount_price)
+          console.log("judger-sku" + sku.stock)
           this.setData({
               previewImg:sku.img,
               title:sku.title,
@@ -116,12 +114,16 @@ Component({
           return stock < currentCount;
       },
       onSelectCount(event){
-          const currentCount = event.detail.count;
-          console.log("currentCount"+currentCount);
+          const currentCount = event.detail.count
           this.data.currentSkuCount = currentCount
-          if(this.data.judge.isSkuIntact()){
-              const sku = this.data.judge.getDeterminateSku()
-              this.setStockStatus(sku.stock,currentCount)
+
+          if (this.noSpec()) {
+              this.setStockStatus(this.getNoSpecSku().stock, currentCount)
+          } else {
+              if (this.data.judger.isSkuIntact()) {
+                  const sku = this.data.judger.getDeterminateSku()
+                  this.setStockStatus(sku.stock, currentCount)
+              }
           }
       },
       onCellTap(event){

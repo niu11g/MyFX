@@ -38,7 +38,7 @@ class FenceGroup{
         this.fences[x].cells[y].status=status
     }
 
-    initFences(){
+    initFences1(){
         const matrix = this._createMatrix(this.skuList)
         const fences = []
         let currentJ = -1;
@@ -48,21 +48,24 @@ class FenceGroup{
                 currentJ = j
                 fences[currentJ] = this._createFence(element)
             }
-            // fences[currentJ].pushValueTitle(element.value)
+            fences[currentJ].pushValueTitle(element.value)
         })
         console.log(fences);
     }
-    initFences1(){
+    initFences(){
         const matrix = this._createMatrix(this.skuList)
         const fences = [];
         const m = matrix.transpose()
         m.forEach(r=>{
             const fence = new Fence(r)
             fence.init()
+            console.log("fence_id"+fence.id)
+            if(this._hasSketchFence() && this._isSketchFence(fence.id)){
+                fence.setFenceSketch(this.skuList)
+            }
             fences.push(fence)
         })
         this.fences = fences
-        console.log(fences)
     }
     _createFence(element){
         const fence = new Fence()
@@ -82,6 +85,14 @@ class FenceGroup{
             cb(cell,i,j)
           }
         }
+    }
+    _hasSketchFence(){
+        console.log("sketch_spec_id"+this.spu.sketch_spec_id);
+        return this.spu.sketch_spec_id?true:false
+    }
+    _isSketchFence(fenceId){
+        return this.spu.sketch_spec_id === fenceId?true:false
+
     }
 
 }

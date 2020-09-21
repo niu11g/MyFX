@@ -2,6 +2,18 @@
 <!-- <view class="container">
 
 </view> -->
+<view>
+  <swiper class="top"
+          autoplay
+          indicator-dots>
+    <block wx:for="{{spu.spu_img_list}}">
+      <swiper-item>
+        <image class="top" mode="aspectFill" src="{{item.img}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <s-spu-description spu="{{spu}}"></s-spu-description>
+</view>
   <l-popup content-align="bottom"  show="{{showRelam}}">
     <s-relam order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
   </l-popup>

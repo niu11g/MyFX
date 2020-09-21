@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "s-relam": "/components/relam/index",
-    "s-tabbar":"/components/tab-bar/index"
+    "s-tabbar":"/components/tab-bar/index",
+    "s-spu-description": "/components/spu-description/index"
   }
 }

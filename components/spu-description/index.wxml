@@ -1,0 +1,45 @@
+<wxs src='../../wxs/price.wxs' module="p"/>
+<view class="container">
+    <view class="left">
+        <text class="title">{{spu.title}}</text>
+        <view class="tags">
+          <block wx:for="{{tags}}">
+            <l-tag type="reading"
+                   bg-color="#DCEBE6"
+                   font-color="#157658"
+                   size="super-mini"
+                   l-class="l-tag">
+                   {{item}}
+            </l-tag>
+          </block>
+        </view>
+        <text class="subtitle">{{spu.subtitle}}</text>
+        <view class="price-row">
+            <l-price
+                    wx:if="{{p.mainPrice(spu.price,spu.discount_price).display}}"
+                    value="{{p.mainPrice(spu.price,spu.discount_price).price}}"
+                    color="#157658"
+                    unit-size="24"
+                    count-size="30"
+                    l-unit-class="l-price-unit"
+                    autofix></l-price>
+            <l-price deleted
+                     wx:if="{{p.dashPrice(spu.price,spu.discount_price).display}}"
+                     color="#999999"
+                     value-size="26"
+                     bold="400"
+                     value="{{p.dashPrice(spu.price,spu.discount_price).price}}"
+                     l-class="discount-price"></l-price>
+            <l-tag  l-class="discount-tag"
+                    type="reading"
+                    bg-color="#c93756"
+                    wx:if="{{spu.discount_price}}"
+                    size="super-mini">
+                折扣
+            </l-tag>
+        </view>
+    </view>
+    <view class="right">
+
+    </view>
+</view>

@@ -32,6 +32,13 @@
     background-color:  #ffffff;
 }
 
+.img{
+    display: flex;
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 10rpx;
+}
+
 .selected{
     background-color: #157658;
 }
