@@ -1,0 +1,8 @@
+<view class="container">
+<!--  参数值后不能带空格-->
+  <block wx:for="{{_texts}}">
+    <view class="inner">
+      <text>{{item}}</text>
+    </view>
+  </block>
+</view>

@@ -32,6 +32,7 @@ Component({
        }else {
            this.processHasSpec(spu)
        }
+       this.triggerSpecEvent();
     }
   },
   /**
@@ -74,6 +75,7 @@ Component({
           this.bindTipData()
           this.bindFenceGroupData(fenceGroup)
       },
+
       bindSpuData(){
           const spu = this.properties.spu
           this.setData({
@@ -82,6 +84,21 @@ Component({
               price:spu.price,
               discountPrice:spu.discount_price
           })
+      },
+      triggerSpecEvent() {
+          const noSpec = Spu.isNoSpec(this.properties.spu);
+          if (noSpec) {
+              this.triggerEvent('specchange', {
+                  noSpec
+              })
+          } else {
+              this.triggerEvent('specchange', {
+                  noSpec:noSpec,
+                  skuIntact: this.data.judge.isSkuIntact(),
+                  currentValues: this.data.judge.getCurrentValues(),
+                  missingKeys: this.data.judge.getMissingKeys()
+              })
+          }
       },
       bindSkuData(sku){
           console.log("judger-sku" + sku.stock)
@@ -146,6 +163,7 @@ Component({
           }
           this.bindTipData()
           this.bindFenceGroupData(judge.fenceGroup)
+          this.triggerSpecEvent()
       }
   }
 })

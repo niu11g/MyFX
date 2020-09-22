@@ -2,7 +2,7 @@
 <!-- <view class="container">
 
 </view> -->
-<view>
+<scroll-view style="height:{{h}}rpx;" scroll-y>
   <swiper class="top"
           autoplay
           indicator-dots>
@@ -12,16 +12,33 @@
       </swiper-item>
     </block>
   </swiper>
+
   <s-spu-description spu="{{spu}}"></s-spu-description>
-</view>
-  <l-popup content-align="bottom"  show="{{showRelam}}">
-    <s-relam order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
-  </l-popup>
-  <s-tabbar class="tabbar" bind:gotohome="onGotoHome"
-          bind:gotocart="onGotoCart"
-          bind:addtocart="onAddToCart"
-          bind:buy="onBuy">
-  </s-tabbar>
+
+  <view wx:if="{{!specs.noSpec}}" class="sku-pending">
+    <view class="specs">
+      <text wx:if="{{!specs.skuIntact}}">请选择：</text>
+      <text wx:else>已选:</text>
+      <text wx:if="{{!specs.skuIntact}}">{{specs.missingKeys}}</text>
+      <text wx:else>{{specs.currentValues}}</text>
+    </view>
+    <view class="arrow-right">
+      <l-icon name="right" color="#157658" size="24"></l-icon>
+    </view>
+  </view>
+
+  <view class="explain">
+    <s-sale-explain texts="{{explain}}"></s-sale-explain>
+  </view>
+</scroll-view>
+<l-popup content-align="bottom"  show="{{showRelam}}">
+  <s-relam bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
+</l-popup>
+<s-tabbar class="tabbar" bind:gotohome="onGotoHome"
+        bind:gotocart="onGotoCart"
+        bind:addtocart="onAddToCart"
+        bind:buy="onBuy">
+</s-tabbar>
 
 
 <!-- <l-icon name="home" l-class="sleeve"></l-icon> -->

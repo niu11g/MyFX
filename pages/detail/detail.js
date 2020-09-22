@@ -1,6 +1,8 @@
 // pages/detail/detail.js
 import {Spu} from "../../model/spu";
 import {ShoppingWay} from "../../core/enum";
+import {SaleExplain} from "../../model/sale-explain";
+import {getWindowHeightRpx} from "../../utils/system";
 
 Page({
 
@@ -18,9 +20,14 @@ Page({
   onLoad: async function (options) {
     const pid = options.pid;
     const spu = await Spu.getSpuById(pid);
+    const explain = await SaleExplain.getFixed();
+    const windowHeight = await getWindowHeightRpx();
+    const h = windowHeight - 100;
     // console.log(spu)
     this.setData({
-      spu
+      spu,
+      explain,
+      h
     })
 
   },
@@ -38,6 +45,11 @@ Page({
     this.setData({
       showRelam:true,
       orderWay:ShoppingWay.CART
+    })
+  },
+  onSpecChange(event){
+    this.setData({
+      specs:event.detail
     })
   },
   onBuy:function(){
