@@ -1,4 +1,4 @@
-// pages/category/category.js
+// pages/search/search.js
 Page({
 
   /**
@@ -13,12 +13,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-
-  onGotoSearch(event){
-    wx.navigateTo({
-      url:`/pages/search/search`
-    })
   },
 
   /**

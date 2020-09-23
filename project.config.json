@@ -82,6 +82,13 @@
           "pathName": "pages/detail/detail",
           "query": "pid=2",
           "scene": null
+        },
+        {
+          "id": 2,
+          "name": "分类模块",
+          "pathName": "pages/category/category",
+          "query": "",
+          "scene": null
         }
       ]
     }

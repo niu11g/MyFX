@@ -1,1 +1,25 @@
 /* pages/category/category.wxss */
+Page{
+    background-color: white;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-btn{
+    background-color: #f1f1f1 !important;
+    color: #c4c9d2 !important;
+    font-size: 24rpx !important;
+    font-weight: 400 !important;
+    border-radius: 4rpx !important;
+}

@@ -30,6 +30,13 @@
   <view class="explain">
     <s-sale-explain texts="{{explain}}"></s-sale-explain>
   </view>
+
+  <view class="detail-img-container">
+    <block wx:for="{{spu.spu_detail_img_list}}" wx:key="{{index}}">
+      <image class="detail-img" mode="widthFix" src="{{item.img}}"></image>
+<!--      <image class="detail-img" src="{{item.img}}"></image>-->
+    </block>
+  </view>
 </scroll-view>
 <l-popup content-align="bottom"  show="{{showRelam}}">
   <s-relam bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-relam>

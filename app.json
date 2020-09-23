@@ -4,7 +4,8 @@
     "pages/detail/detail",
     "pages/cart/cart",
     "pages/category/category",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,9 +15,9 @@
     "onReachBottomDistance": 30
   },
   "tabBar": {
-    "borderStyle":"black",
-    "color":"#333333",
-    "selectedColor":"#333333",
+    "borderStyle": "black",
+    "color": "#333333",
+    "selectedColor": "#333333",
     "list": [
       {
         "text": "首页",
@@ -57,6 +58,6 @@
     "s-counter": "/components/counter/index",
     "l-badge": "/miniprogram_npm/lin-ui/badge/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
-    "l-button":"/miniprogram_npm/lin-ui/button/index"
+    "l-button": "/miniprogram_npm/lin-ui/button/index"
   }
 }
