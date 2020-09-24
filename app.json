@@ -58,6 +58,8 @@
     "s-counter": "/components/counter/index",
     "l-badge": "/miniprogram_npm/lin-ui/badge/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
-    "l-button": "/miniprogram_npm/lin-ui/button/index"
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-segment": "/miniprogram_npm/lin-ui/segment/index",
+    "l-segment-item":"/miniprogram_npm/lin-ui/segment-item/index"
   }
 }

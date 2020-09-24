@@ -2,7 +2,7 @@
 <!-- <view class="container">
 
 </view> -->
-<scroll-view style="height:{{h}}rpx;" scroll-y>
+<scroll-view >
   <swiper class="top"
           autoplay
           indicator-dots>
@@ -51,3 +51,4 @@
 <!-- <l-icon name="home" l-class="sleeve"></l-icon> -->
 
 <!--<l-icon name="radio" l-class="sleeve"></l-icon>-->
+
