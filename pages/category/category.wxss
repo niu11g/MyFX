@@ -31,7 +31,7 @@ Page{
 
 .segment-item-inactive{
     color: #666666 !important;
-    background-color: #f3f3f3 !important;
+    background-color: #ffffff !important;
     font-size: 26rpx !important;
 }
 
@@ -48,4 +48,12 @@ Page{
     flex-direction: row;
     justify-content: space-between;
     border-top:2rpx solid #f3f3f3;
+}
+
+.right {
+    width:588rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 2rpx solid #f3f3f3;
 }

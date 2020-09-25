@@ -1,0 +1,32 @@
+<!--grid写成了gird 导致显示样式错误-->
+<!--<view class="container">-->
+<!--    <image class="banner" src="{{bannerImg}}" wx:if="{{bannerImg}}"></image>-->
+<!--    <text class="title">- 全部分类 -</text>-->
+<!--    <l-gird l-class="inner-container">-->
+<!--        <block wx:for="{{categories}}" wx:key="{{index}}">-->
+<!--            <l-grid-item bind:linitemtap="onTapGridItem" key="{{index}}" slot="{{index}}">-->
+<!--                <view class="grid-item">-->
+<!--                    <image mode="aspectFit" class="img" src="{{item.img}}"></image>-->
+<!--                    <text>{{item.name}}</text>-->
+<!--                </view>-->
+<!--            </l-grid-item>-->
+<!--        </block>-->
+<!--    </l-gird>-->
+<!--</view>-->
+
+
+<view class="container">
+    <image class="banner" src="{{bannerImg}}" wx:if="{{bannerImg}}"></image>
+    <text class="title">- 全部分类 -</text>
+<!--    自定义组件得使用外部样式类 ，内部样式不生效  -->
+    <l-grid  l-class="inner-container">
+        <block wx:for="{{categories}}" wx:key="{{index}}">
+            <l-grid-item bind:linitemtap="onTapGridItem"  key="{{index}}" slot="{{index}}">
+                <view class="grid-item">
+                    <image mode="aspectFit" class="img" src="{{item.img}}"></image>
+                    <text>{{item.name}}</text>
+                </view>
+            </l-grid-item>
+        </block>
+    </l-grid>
+</view>

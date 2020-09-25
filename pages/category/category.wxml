@@ -19,27 +19,22 @@
                 height="{{segHeight}}"
                 even="{{false}}"
                 width="160"
+                scrollable
+                bind:linchange="onSegChange"
+                active-key="{{defaultRootId}}"
                 item-height="90"
                 l-active-class="segment-item-active"
                 l-inactive-class="segment-item-inactive"
                 l-line-class="l-seg-line"
                 placement="left">
-            <l-segment-item key="1" tab="唐门"></l-segment-item>
-            <l-segment-item key="2" tab="长歌"></l-segment-item>
-            <l-segment-item key="3" tab="唐门"></l-segment-item>
-            <l-segment-item key="4" tab="唐门"></l-segment-item>
-            <l-segment-item key="5" tab="唐门"></l-segment-item>
-            <l-segment-item key="1" tab="唐门"></l-segment-item>
-            <l-segment-item key="2" tab="长歌"></l-segment-item>
-            <l-segment-item key="3" tab="唐门"></l-segment-item>
-            <l-segment-item key="4" tab="唐门"></l-segment-item>
-            <l-segment-item key="5" tab="唐门"></l-segment-item>
-            <l-segment-item key="1" tab="唐门"></l-segment-item>
-            <l-segment-item key="2" tab="长歌"></l-segment-item>
-            <l-segment-item key="3" tab="唐门"></l-segment-item>
-            <l-segment-item key="4" tab="唐门"></l-segment-item>
+            <bolck wx:for="{{roots}}" wx:key="{{index}}">
+                <l-segment-item key="{{item.id}}" tab="{{item.name}}"></l-segment-item>
+            </bolck>
         </l-segment>
-        <view></view>
+        <view class="right">
+            <s-sub-category bind:itemtap="onJumpToSpuList" categories="{{currentSubs}}" bannerImg="{{currentBannerImg}}"></s-sub-category>
+        </view>
+
     </view>
 
 </view>
