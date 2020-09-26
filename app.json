@@ -39,7 +39,7 @@
         "selectedIconPath": "imgs/home/cart.png"
       },
       {
-        "text": "分类",
+        "text": "我的",
         "pagePath": "pages/my/my",
         "iconPath": "imgs/home/my@dis.png",
         "selectedIconPath": "imgs/home/my.png"
@@ -61,6 +61,7 @@
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
     "l-segment": "/miniprogram_npm/lin-ui/segment/index",
-    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index"
+    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index"
   }
 }

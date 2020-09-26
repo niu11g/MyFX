@@ -1,2 +1,32 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="header">
+    <l-search-bar
+            l-class="input"
+            maxlength="9"
+            bg-color="#f1"
+            placeholder="输入商品名称"
+            bind:linconfirm="onSearch">
+
+    </l-search-bar>
+</view>
+
+<view class="container">
+    <view>
+        <view wx:if="{{historyTags.length != 0}}"class="history-container">
+            <view class="history-title">
+                <view class="slide"></view>
+                <text>历史搜索</text>
+                <view style="flex:1"></view>
+                <view bind:tap="onDeleteHistory" class="icon">
+                    <l-icon name="delete" color="#999999" size="32"></l-icon>
+                </view>
+            </view>
+            <view class="history-tags">
+                <block wx:for="{{historyTags}}" wx:key="{{index}}">
+                    <l-tag name="{{item}}" l-class="tag">
+{{item}}
+                    </l-tag>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>
