@@ -130,6 +130,10 @@ Component({
       isOutOfStock(stock,currentCount){
           return stock < currentCount;
       },
+      noSpec(){
+          const spu = this.properties.spu
+          return Spu.isNoSpec(spu)
+      },
       onSelectCount(event){
           const currentCount = event.detail.count
           this.data.currentSkuCount = currentCount
@@ -164,6 +168,41 @@ Component({
           this.bindTipData()
           this.bindFenceGroupData(judge.fenceGroup)
           this.triggerSpecEvent()
+      },
+      onBuyOrCart(event){
+          if(Spu.isNoSpec(this.properties.spu)){
+              this.shoppingNoSpec();
+          }else{
+              this.shoppingVarious()
+          }
+      },
+      shoppingVarious(){
+          const intact = this.data.judge.isSkuIntact();
+          if(!intact){
+              const missKeys = this.data.judge.getMissingKeys()
+              wx.showToast({
+                  icon:"none",
+                  title:`请选择：${missKeys.join(', ')}`,
+                  duration:3000
+              })
+              return
+          }
+          this._triggerShoppingEvent(this.data.judge.getDeterminateSku())
+      },
+      shoppingNoSpec(){
+          this._triggerShoppingEvent(this.getNoSpecSku())
+      },
+
+      getNoSpecSku(){
+          return this.properties.spu.sku_list[0]
+      },
+      _triggerShoppingEvent(sku){
+          this.triggerEvent('shopping',{
+              orderWay:this.properties.orderWay,
+              spuId:this.properties.spu.id,
+              skuId:sku,
+              skuCount:this.data.currentSkuCount,
+          })
       }
   }
 })

@@ -4,14 +4,16 @@
             maxlength="9"
             bg-color="#f1"
             placeholder="输入商品名称"
-            bind:linconfirm="onSearch">
+            bind:linconfirm="onSearch"
+            bind:lincancel="onCancel"
+            >
 
     </l-search-bar>
 </view>
 
 <view class="container">
-    <view>
-        <view wx:if="{{historyTags.length != 0}}"class="history-container">
+    <view wx:if="{{!search}}">
+        <view wx:if="{{historyTags.length !== 0}}" class="history-container">
             <view class="history-title">
                 <view class="slide"></view>
                 <text>历史搜索</text>
@@ -22,11 +24,39 @@
             </view>
             <view class="history-tags">
                 <block wx:for="{{historyTags}}" wx:key="{{index}}">
-                    <l-tag name="{{item}}" l-class="tag">
-{{item}}
+                    <l-tag bind:lintap="onSearch"  name="{{item}}" l-class="tag">
+                        {{item}}
+                    </l-tag>
+                </block>
+            </view>
+        </view>
+        <view class="history-container">
+            <view class="history-title">
+                <view class="slide"></view>
+                <text>热门搜索</text>
+                <view style="flex:1"></view>
+            </view>
+            <view class="history-tags">
+                <block wx:for="{{hotTags}}" wx:key="{{index}}">
+                    <l-tag bind:lintap="onSearch" select="{{item.highlight}}" name="{{item.title}}" l-class="tag" l-select-class="tag-selected">
+                        {{item.title}}
                     </l-tag>
                 </block>
             </view>
         </view>
     </view>
+    <view wx:else>
+        <l-loadmore show end-text="- 风袖 -" type="{{loadingType}}">
+            <view slot="content" hidden="{{!search}}" class="spu-bottom">
+                <block wx:for="{{items}}">
+                    <s-spu-preview-r data="{{item}}"></s-spu-preview-r>
+                 </block>
+            </view>
+        </l-loadmore>
+    </view>
+
+<!-- wx.lin 一个页面只能控制一个loading -->
+    <l-loading></l-loading>
+
+
 </view>

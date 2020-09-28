@@ -39,7 +39,7 @@
   </view>
 </scroll-view>
 <l-popup content-align="bottom"  show="{{showRelam}}">
-  <s-relam bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
+  <s-relam bind:shopping="onShopping" bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
 </l-popup>
 <s-tabbar class="tabbar" bind:gotohome="onGotoHome"
         bind:gotocart="onGotoCart"
