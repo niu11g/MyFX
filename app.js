@@ -1,4 +1,6 @@
 //app.js
+import {Cart} from "./model/cart";
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -32,6 +34,12 @@ App({
         }
       }
     })
+    const cart = new Cart()
+    if(!cart.isEmpty()){
+      wx.showTabBarRedDot({
+        index:2
+      })
+    }
   },
   globalData: {
     userInfo: null

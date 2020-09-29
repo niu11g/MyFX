@@ -92,6 +92,7 @@ Component({
                   noSpec
               })
           } else {
+              console.log(this.data.judge)
               this.triggerEvent('specchange', {
                   noSpec:noSpec,
                   skuIntact: this.data.judge.isSkuIntact(),
