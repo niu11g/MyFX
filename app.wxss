@@ -6,18 +6,19 @@ Page{
 /*每次图标库中新添加图标后，都需重新生成代码，否则新加图标不生效*/
 @font-face {
   font-family: 'MyFx';  /* project id 2079236 */
-  src: url('//at.alicdn.com/t/font_2079236_avzd0byycz.eot');
-  src: url('//at.alicdn.com/t/font_2079236_avzd0byycz.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_2079236_avzd0byycz.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_2079236_avzd0byycz.woff') format('woff'),
-  url('//at.alicdn.com/t/font_2079236_avzd0byycz.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_2079236_avzd0byycz.svg#MyFx') format('svg');
+  src: url('//at.alicdn.com/t/font_2079236_oeyfecx1y.eot');
+  src: url('//at.alicdn.com/t/font_2079236_oeyfecx1y.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.svg#MyFx') format('svg');
 }
 
 
 .sleeve{
   font-family: MyFx !important;
   color: #157658 !important;
+  /* color:white !important; */
 }
 
 .l-icon-home:before{
@@ -30,5 +31,9 @@ Page{
 /*定义名为cart不生效，原因：已是内部样式名*/
 .l-icon-lcart:before{
   content: "\e60c"
+}
+
+.l-icon-check:before{
+  content: "\e612";
 }
 

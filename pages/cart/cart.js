@@ -10,21 +10,6 @@ Page({
     cartItems:[],
     isEmpty:false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    * 刷新频率高
@@ -38,6 +23,7 @@ Page({
     this.setData({
       cartItems
     })
+    this.notEmpty()
 
   },
 
@@ -46,6 +32,15 @@ Page({
       isEmpty:true
     })
     wx.hideTabBarRedDot({
+      index:2
+    })
+  },
+
+  notEmpty(){
+    this.setData({
+      isEmpty:false
+    })
+    wx.showTabBarRedDot({
       index:2
     })
   }

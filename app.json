@@ -63,7 +63,6 @@
     "l-segment": "/miniprogram_npm/lin-ui/segment/index",
     "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "l-loading":"/miniprogram_npm/lin-ui/loading/index",
-
     "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
     "s-spu-preview": "/components/spu-preview/index",
     "s-spu-preview-r": "/components/spu-preview-r/index",

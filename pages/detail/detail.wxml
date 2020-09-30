@@ -42,6 +42,7 @@
   <s-relam bind:shopping="onShopping" bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-relam>
 </l-popup>
 <s-tabbar class="tabbar" bind:gotohome="onGotoHome"
+          cart-item-count="{{cartItemCount}}"
         bind:gotocart="onGotoCart"
         bind:addtocart="onAddToCart"
         bind:buy="onBuy">

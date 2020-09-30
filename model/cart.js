@@ -17,6 +17,14 @@ class Cart{
         return this
     }
 
+    static isSoldOut(item){
+        return item.sku.stock === 0
+    }
+
+    static isOnline(item){
+        return item.sku.online
+    }
+
     getAllCartItemFromLocal(){
         return this._getCartData()
     }
@@ -32,6 +40,11 @@ class Cart{
         }
         this._pushItem(newItem)
         this._refreshStorage()
+    }
+
+    getCartItemCount(){
+
+        return this._getCartData().items.length
     }
 
     removeItem(skuId){
@@ -97,6 +110,7 @@ class Cart{
             return this._cartData
         }
         let cartData = wx.getStorageSync(Cart.STORAGE_KEY);
+        console.log(cartData)
         if(!cartData){
             cartData = this._initCartDataStorage()
         }

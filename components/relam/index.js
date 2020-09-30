@@ -75,7 +75,6 @@ Component({
           this.bindTipData()
           this.bindFenceGroupData(fenceGroup)
       },
-
       bindSpuData(){
           const spu = this.properties.spu
           this.setData({
@@ -136,14 +135,15 @@ Component({
           return Spu.isNoSpec(spu)
       },
       onSelectCount(event){
+
           const currentCount = event.detail.count
           this.data.currentSkuCount = currentCount
 
           if (this.noSpec()) {
               this.setStockStatus(this.getNoSpecSku().stock, currentCount)
           } else {
-              if (this.data.judger.isSkuIntact()) {
-                  const sku = this.data.judger.getDeterminateSku()
+              if (this.data.judge.isSkuIntact()) {
+                  const sku = this.data.judge.getDeterminateSku()
                   this.setStockStatus(sku.stock, currentCount)
               }
           }
@@ -201,7 +201,7 @@ Component({
           this.triggerEvent('shopping',{
               orderWay:this.properties.orderWay,
               spuId:this.properties.spu.id,
-              skuId:sku,
+              sku:sku,
               skuCount:this.data.currentSkuCount,
           })
       }
