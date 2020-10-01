@@ -8,12 +8,21 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    cartItem: Object
+    cartItem:Object,
+    stock:{
+      type:Number,
+      value:Cart.SKU_MAX_COUNT
+    },
+    count:{
+      type:Number,
+      value:Cart.CART_ITEM_MAX_COUNT
+    }
 
   },
 
   observers:{
     cartItem:function(cartItem){
+      console.log("observers-cartItem")
       this.setData({
         online:true
       })
@@ -25,11 +34,15 @@ Component({
       const discount = cartItem.sku.discount_price ? true : false
       const soldOut = Cart.isSoldOut(cartItem)
       const online = Cart.isOnline(cartItem)
+      const stock = cartItem.sku.stock
+      const count = cartItem.count
       this.setData({
         specStr,
         discount,
         soldOut,
-        online
+        online,
+        stock,
+        count
       })
     }
 
@@ -42,15 +55,24 @@ Component({
     specStr: String,
     discount: Boolean,
     soldOut: Boolean,
-    online: Boolean,
-    stock: Cart.SKU_MAX_COUNT,
-    skuCount: 1
+    online: Boolean
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onDelete(event){
+      const skuId = this.properties.cartItem.sku.id
+      const sku = new Cart()
+      cart.removeItem(skuId)
+      this.setData({
+         cartItem:null
+      })
+      this.triggerEvent('itemdelete',{
+        skuId
+      })
+    }
 
   }
 })

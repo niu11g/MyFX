@@ -49,7 +49,7 @@ Component({
             x: 0
           });
           this.onCloseTap();
-        } 
+        }
       }
     }
   },
@@ -75,7 +75,7 @@ Component({
     updateRight() {
 
       // 获取右侧滑动显示区域的宽度
-      const that = this; 
+      const that = this;
       const query = wx.createSelectorQuery().in(this);
       query.select('.right').boundingClientRect(function (res) {
         that._slideWidth = res.width;
@@ -88,6 +88,7 @@ Component({
       }).exec();
     },
     onTouchStart(e) {
+      console.log(e)
       this._startX = e.changedTouches[0].pageX;
     },
     //  当滑动范围超过阈值自动完成剩余滑动

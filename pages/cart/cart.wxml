@@ -1,5 +1,5 @@
 <view wx:if="{{!isEmpty}}" class="container">
-    <block wx:for="{{cartItems}}">
+    <block wx:for="{{cartItems}}" wx:key="index">
         <s-cart-item bind:overflow="onOverFlow" bind:itemdelete="onDeleteItem" cart-item="{{item}}">
         </s-cart-item>
     </block>

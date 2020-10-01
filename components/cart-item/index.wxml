@@ -51,7 +51,7 @@
                     <s-counter bind:linout="onOutNumber"
                                max="{{stock}}"
                                bind:lintap="onSelectCount"
-                               count="{{skuCount}}">
+                               count="{{count}}">
                     </s-counter>
                 </view>
             </view>

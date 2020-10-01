@@ -26,10 +26,12 @@ class Cart{
     }
 
     getAllCartItemFromLocal(){
+        console.log("getAllCartItemFromLocal")
         return this._getCartData()
     }
 
     isEmpty() {
+        console.log("isEmpty")
         const cartData = this._getCartData()
         return cartData.items.length === 0;
     }
@@ -106,6 +108,7 @@ class Cart{
     }
 
     _getCartData(){
+        console.log("+getCartData")
         if(this._cartData !== null){
             return this._cartData
         }

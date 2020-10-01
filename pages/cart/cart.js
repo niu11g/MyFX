@@ -8,15 +8,17 @@ Page({
    */
   data: {
     cartItems:[],
-    isEmpty:false
+    isEmpty:true
   },
   /**
    * 生命周期函数--监听页面显示
    * 刷新频率高
    */
   onShow: function () {
+    console.log("onShow")
     const cart = new Cart()
     const cartItems = cart.getAllCartItemFromLocal().items;
+    console.log(cartItems)
     if(cart.isEmpty()){
       this.empty()
     }
@@ -28,6 +30,7 @@ Page({
   },
 
   empty(){
+    console.log("empty");
     this.setData({
       isEmpty:true
     })
@@ -37,6 +40,7 @@ Page({
   },
 
   notEmpty(){
+    console.log("notEmpty");
     this.setData({
       isEmpty:false
     })

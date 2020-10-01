@@ -19,6 +19,12 @@ Component({
     }
 
   },
+  observers:{
+    'count,max,min':function (count,max,min) {
+      console.log(count+","+max+","+min)
+
+    }
+  },
 
   /**
    * 组件的初始数据
@@ -32,20 +38,20 @@ Component({
    */
   methods: {
     onOverStep(event){
-      console.log("onOverStep")
       const minOrMaxOut = event.detail.type
+      console.log(minOrMaxOut)
       if(minOrMaxOut == 'overflow_max'){
         wx.showToast({
           icon:"none",
           duration:3000,
-          title:`超出最大购买数量${Cart.SKU_MAX_COUNT}`
+          title:`超出最大购买数量${this.properties.max}`
         })
       }
       if(minOrMaxOut == 'overflow_min'){
         wx.showToast({
           icon:"none",
           duration: 3000,
-          title:`最少需要购买${Cart.SKU_MIN_COUNT}件噢`
+          title:`最少需要购买${this.properties.min}件噢`
         })
       }
 

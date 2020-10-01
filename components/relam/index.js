@@ -26,6 +26,7 @@ Component({
        if(!spu){
          return;
        }
+       console.log("relam.index.js.spu")
        console.log(spu)
        if(Spu.isNoSpec(spu)){
            this.processNoSpec(spu)

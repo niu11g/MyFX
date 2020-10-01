@@ -36,7 +36,7 @@
     "packNpmRelationList": []
   },
   "compileType": "miniprogram",
-  "libVersion": "2.9.2",
+  "libVersion": "2.13.1",
   "appid": "wx927ce75bbe52a272",
   "projectname": "MyFX",
   "debugOptions": {
