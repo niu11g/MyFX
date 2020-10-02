@@ -63,8 +63,7 @@ Component({
    */
   methods: {
     onDelete(event){
-      const skuId = this.properties.cartItem.sku.id
-      const sku = new Cart()
+      const skuId = this.properties.cartItem.skuId
       cart.removeItem(skuId)
       this.setData({
          cartItem:null
@@ -72,7 +71,15 @@ Component({
       this.triggerEvent('itemdelete',{
         skuId
       })
-    }
+    },
 
+    checkedItem(event){
+      const checked = event.detail.checked
+      cart.checkItem(this.properties.cartItem.skuId)
+      this.properties.cartItem.checked = checked
+      this.triggerEvent('itemcheck',{
+
+      })
+    }
   }
 })

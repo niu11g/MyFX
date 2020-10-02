@@ -68,6 +68,7 @@
     "s-spu-preview": "/components/spu-preview/index",
     "s-spu-preview-r": "/components/spu-preview-r/index",
     "s-cart-item":"/components/cart-item/index",
+    "s-checkbox": "/components/checkbox/index",
     "s-empty":"/components/empty/index"
   }
 }

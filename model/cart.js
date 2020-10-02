@@ -5,16 +5,38 @@ class Cart{
     static CART_ITEM_MAX_COUNT = 77
     static STORAGE_KEY = 'cart'
 
+    //代理模式
     _cartData = null
 
-    //代理模式
 
+
+    //单例模式
     constructor() {
         if(typeof Cart.instance === 'Object'){
             return Cart.instance
         }
         Cart.instance = this
         return this
+    }
+
+    isAllChecked(){
+        let allChecked = true
+        const cartItems = this._getCartData().items
+        for (let item of cartItems){
+            if(!item.checked){
+                allChecked = false
+                break
+            }
+        }
+        return allChecked
+    }
+
+    allCheck(checked){
+        const cartItem = this._getCartData().items
+        for(let item of cartItem){
+            item.checked = checked
+        }
+        this._refreshStorage()
     }
 
     static isSoldOut(item){
@@ -28,6 +50,30 @@ class Cart{
     getAllCartItemFromLocal(){
         console.log("getAllCartItemFromLocal")
         return this._getCartData()
+    }
+
+    checkItem(skuId){
+        const oldItem = this.findEqualItem(skuId)
+        oldItem.checked = !oldItem.checked
+        console.log(this._cartData)
+        this._refreshStorage()
+    }
+
+    findEqualItem(skuId){
+        let oldItem = null
+        const items = this._getCartData().items
+        for (let i = 0;i < items.length; i++){
+            if(this._isEqualItem(items[i],skuId)){
+                oldItem = items[i]
+                break
+            }
+        }
+        console.log(oldItem)
+        return oldItem
+    }
+
+    _isEqualItem(oldItem,skuId){
+        return oldItem.skuId === skuId;
     }
 
     isEmpty() {
@@ -65,6 +111,7 @@ class Cart{
 
     _refreshStorage(){
         wx.setStorageSync(Cart.STORAGE_KEY,this._cartData)
+        console.log(wx.getStorageSync(Cart.STORAGE_KEY))
     }
 
 
@@ -80,21 +127,9 @@ class Cart{
         }
     }
 
-    findEqualItem(skuId){
-        let oldItem = null
-        const items = this._getCartData().items
-        for (let i = 0;i < items.length; i++){
-            if(this._isEqualItem(items[i],skuId)){
-                oldItem = items[i]
-                break
-            }
-        }
-        return oldItem
-    }
 
-    _isEqualItem(oldItem,skuId){
-        return oldItem.skuId === skuId;
-    }
+
+
 
     _combineItems(oldItem,newItem){
         this._plusCount(oldItem,newItem.count)
@@ -109,11 +144,11 @@ class Cart{
 
     _getCartData(){
         console.log("+getCartData")
+        console.log(this._cartData)
         if(this._cartData !== null){
             return this._cartData
         }
         let cartData = wx.getStorageSync(Cart.STORAGE_KEY);
-        console.log(cartData)
         if(!cartData){
             cartData = this._initCartDataStorage()
         }
@@ -122,6 +157,7 @@ class Cart{
     }
 
     _initCartDataStorage(){
+        console.log("_initCartDataStorage")
         const cartData = {
             items:[]
         }

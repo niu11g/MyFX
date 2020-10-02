@@ -8,7 +8,8 @@ Page({
    */
   data: {
     cartItems:[],
-    isEmpty:true
+    isEmpty:true,
+    allChecked:false
   },
   /**
    * 生命周期函数--监听页面显示
@@ -26,7 +27,31 @@ Page({
       cartItems
     })
     this.notEmpty()
+    this.isAllChecked()
 
+  },
+  isAllChecked(){
+    const cart = new Cart()
+    let allChecked = cart.isAllChecked()
+    console.log(allChecked)
+    this.setData({
+        allChecked
+    })
+  },
+  onCheckAll(event){
+    const checked = event.detail.checked
+    const cart = new Cart()
+    cart.allCheck(checked)
+    this.setData({
+      cartItems:cart.getAllCartItemFromLocal().items
+    })
+
+  },
+  onSingleCheck(event){
+    this.isAllChecked()
+  },
+  onDeleteItem(event){
+    this.isAllChecked()
   },
 
   empty(){
