@@ -15,7 +15,7 @@ class Cell{
     }
 
     getCellCode(){
-        console.log(this.spec.key_id)
+        // console.log(this.spec.key_id)
         return this.spec.key_id + '-' + this.spec.value_id
 
     }

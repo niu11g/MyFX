@@ -26,7 +26,6 @@ Page({
     const explain = await SaleExplain.getFixed();
     const windowHeight = await getWindowHeightRpx();
     const h = windowHeight - 100;
-    // console.log(spu)
     this.setData({
       spu,
       explain,
@@ -62,7 +61,6 @@ Page({
     })
   },
   onShopping(event){
-      console.log(event)
     const chosenSku = event.detail.sku
     const skuCount = event.detail.skuCount
 

@@ -26,8 +26,8 @@ Component({
        if(!spu){
          return;
        }
-       console.log("relam.index.js.spu")
-       console.log(spu)
+       // console.log("relam.index.js.spu")
+       // console.log(spu)
        if(Spu.isNoSpec(spu)){
            this.processNoSpec(spu)
        }else {
@@ -92,7 +92,7 @@ Component({
                   noSpec
               })
           } else {
-              console.log(this.data.judge)
+              // console.log(this.data.judge)
               this.triggerEvent('specchange', {
                   noSpec:noSpec,
                   skuIntact: this.data.judge.isSkuIntact(),
@@ -102,7 +102,7 @@ Component({
           }
       },
       bindSkuData(sku){
-          console.log("judger-sku" + sku.stock)
+          // console.log("judger-sku" + sku.stock)
           this.setData({
               previewImg:sku.img,
               title:sku.title,
@@ -156,14 +156,14 @@ Component({
 
           const cell = new Cell(data.spec)
           cell.status = data.status
-          console.log(event.detail)
+          // console.log(event.detail)
           const judge = this.data.judge
           judge.judge(cell,x,y)
           const skuIntact = judge.isSkuIntact()
-          console.log("skuIntact"+skuIntact);
+          // console.log("skuIntact"+skuIntact);
           if(skuIntact){
               const currentSku = judge.getDeterminateSku()
-              console.log("currentSku"+currentSku)
+              // console.log("currentSku"+currentSku)
               this.bindSkuData(currentSku)
               this.setStockStatus(currentSku.stock,this.data.currentSkuCount)
           }

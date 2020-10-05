@@ -21,7 +21,7 @@ Component({
   },
   observers:{
     'count,max,min':function (count,max,min) {
-      console.log(count+","+max+","+min)
+      // console.log(count+","+max+","+min)
 
     }
   },
@@ -39,7 +39,7 @@ Component({
   methods: {
     onOverStep(event){
       const minOrMaxOut = event.detail.type
-      console.log(minOrMaxOut)
+      // console.log(minOrMaxOut)
       if(minOrMaxOut == 'overflow_max'){
         wx.showToast({
           icon:"none",

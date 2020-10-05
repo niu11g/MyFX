@@ -19,7 +19,7 @@ class Judger{
         return sku
     }
     isSkuIntact(){
-           console.log("调用skuintact")
+           // console.log("调用skuintact")
            return this.skuPending.isIntact()
     }
     getMissingKeys(){
@@ -42,7 +42,7 @@ class Judger{
         this.skuPending.init(defaultSku)
         this._initSelectedCell()
         this.judge(null,null,null,true);
-        console.log(this.skuPending)
+        // console.log(this.skuPending)
     }
 
     _initSelectedCell(){
@@ -55,7 +55,7 @@ class Judger{
             const skuCode = new SkuCode(s.code)
             this.pathDict = this.pathDict.concat(skuCode.totalSegments)
         })
-        console.log(this.pathDict)
+        // console.log(this.pathDict)
     }
 
     judge(cell,x,y,isInit=false){
@@ -64,7 +64,7 @@ class Judger{
         }
         this.fenceGroup.eachCell((cell,x,y)=>{
             const path = this._findPotentialPath(cell, x, y)
-            console.log(path)
+            // console.log(path)
             if(!path){
               return
             }

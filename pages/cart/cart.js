@@ -1,5 +1,6 @@
 // pages/cart/cart.js
 import {Cart} from "../../model/cart";
+import {Calculator} from "../../model/calculator";
 
 Page({
 
@@ -9,17 +10,21 @@ Page({
   data: {
     cartItems:[],
     isEmpty:true,
-    allChecked:false
+    allChecked:false,
+    totalPrice:0,
+    totalSkuCount:0
+  },
+  async onLoad(){
+    const cart = new Cart()
+    await cart.getAllSkuFromServer();
   },
   /**
    * 生命周期函数--监听页面显示
    * 刷新频率高
    */
   onShow: function () {
-    console.log("onShow")
     const cart = new Cart()
     const cartItems = cart.getAllCartItemFromLocal().items;
-    console.log(cartItems)
     if(cart.isEmpty()){
       this.empty()
     }
@@ -28,16 +33,32 @@ Page({
     })
     this.notEmpty()
     this.isAllChecked()
+    this.refreshCartData()
 
+  },
+  refreshCartData(){
+    const cart = new Cart()
+    const checkItems = cart.getCheckedItems()
+    const calculator = new Calculator(checkItems)
+    calculator.calc()
+    this.setCalcData(calculator)
+  },
+  setCalcData(calculator){
+    const totalPrice = calculator.getTotalPrice()
+    const totalSkuCount = calculator.getTotalSkuCount()
+    this.setData({
+      totalPrice,
+      totalSkuCount
+    })
   },
   isAllChecked(){
     const cart = new Cart()
     let allChecked = cart.isAllChecked()
-    console.log(allChecked)
     this.setData({
         allChecked
     })
   },
+
   onCheckAll(event){
     const checked = event.detail.checked
     const cart = new Cart()
@@ -47,15 +68,22 @@ Page({
     })
 
   },
+
   onSingleCheck(event){
     this.isAllChecked()
+    this.refreshCartData()
   },
+
   onDeleteItem(event){
     this.isAllChecked()
+    this.refreshCartData()
+  },
+
+  onSelCount(event){
+    this.refreshCartData()
   },
 
   empty(){
-    console.log("empty");
     this.setData({
       isEmpty:true
     })
@@ -65,7 +93,6 @@ Page({
   },
 
   notEmpty(){
-    console.log("notEmpty");
     this.setData({
       isEmpty:false
     })

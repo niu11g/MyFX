@@ -35,7 +35,7 @@ App({
       }
     })
     const cart = new Cart()
-    console.log("app.js")
+    // console.log("app.js")
     if(!cart.isEmpty()){
       wx.showTabBarRedDot({
         index:2

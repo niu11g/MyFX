@@ -22,11 +22,11 @@ Component({
 
   observers:{
     cartItem:function(cartItem){
-      console.log("observers-cartItem")
+      // console.log("observers-cartItem")
       this.setData({
         online:true
       })
-      console.log(cartItem)
+      // console.log(cartItem)
       if(!cartItem){
         return
       }
@@ -80,6 +80,14 @@ Component({
       this.triggerEvent('itemcheck',{
 
       })
+    },
+
+    onSelectCount(event){
+      const newCount = event.detail.count
+      const skuId = this.properties.cartItem.skuId
+      cart.replaceItemCount(skuId,newCount)
+      this.triggerEvent('selcount',{})
+
     }
   }
 })

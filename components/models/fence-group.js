@@ -30,7 +30,7 @@ class FenceGroup{
     getSku(skuCode){
         const fullSkuCode = `${this.spu.id}$${skuCode}`
         const sku = this.spu.sku_list.find(s=>s.code === fullSkuCode)
-        console.log("sku~~~~~~~~~~"+sku)
+        // console.log("sku~~~~~~~~~~"+sku)
         return sku?sku:null
     }
 
@@ -50,7 +50,7 @@ class FenceGroup{
             }
             fences[currentJ].pushValueTitle(element.value)
         })
-        console.log(fences);
+        // console.log(fences);
     }
     initFences(){
         const matrix = this._createMatrix(this.skuList)
@@ -59,7 +59,7 @@ class FenceGroup{
         m.forEach(r=>{
             const fence = new Fence(r)
             fence.init()
-            console.log("fence_id"+fence.id)
+            // console.log("fence_id"+fence.id)
             if(this._hasSketchFence() && this._isSketchFence(fence.id)){
                 fence.setFenceSketch(this.skuList)
             }
@@ -87,7 +87,7 @@ class FenceGroup{
         }
     }
     _hasSketchFence(){
-        console.log("sketch_spec_id"+this.spu.sketch_spec_id);
+        // console.log("sketch_spec_id"+this.spu.sketch_spec_id);
         return this.spu.sketch_spec_id?true:false
     }
     _isSketchFence(fenceId){

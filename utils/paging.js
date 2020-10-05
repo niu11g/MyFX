@@ -1,7 +1,7 @@
 import {Http} from "./http";
 
 class Paging{
-  start 
+  start
   count
   req
   locker = false
@@ -33,7 +33,6 @@ class Paging{
 
   async _actualGetData(){
     const req = this._getCurrentReq()
-    console.log(req)
     let spupage = await Http.request(req)
     if (!spupage){
       return null
@@ -56,14 +55,14 @@ class Paging{
       items: spupage.items,
       moreData:this.moreData,
       accumulator: this.accumulator
-    }  
+    }
   }
   _accumulate(items){
     this.accumulator = this.accumulator.concat(items)
   }
 
   static _moreData(totalPage,pageNum){
-    return pageNum < totalPage -1 
+    return pageNum < totalPage -1
   }
   _getCurrentReq(){
       let url = this.url

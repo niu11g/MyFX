@@ -31,7 +31,7 @@ Page({
     const roots = categories.getRoots()
     const defaultRoot = this.getDefaultRoot(roots)
     const currentSubs = categories.getSubs(defaultRoot.id)
-    console.log(currentSubs)
+    // console.log(currentSubs)
     this.setData({
       roots,
       currentSubs,
@@ -55,7 +55,7 @@ Page({
     })
   },
   onJumpToSpuList(event){
-    console.log(event.detail)
+    // console.log(event.detail)
     const cid = event.detail.cid;
 
     // wx.navigateTo({
@@ -78,7 +78,7 @@ Page({
     const res = await getSystemSize()
     const windowHeightRpx = px2rpx(res.windowHeight)
     const h = windowHeightRpx - 60 -20 -2
-    console.log("segHeight:"+h)
+    // console.log("segHeight:"+h)
     this.setData({
       segHeight:h
     })

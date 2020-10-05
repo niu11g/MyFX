@@ -17,7 +17,7 @@ Component({
 
   observers:{
     'categories':function(t){
-       console.log(t)
+       // console.log(t)
     }
   },
 
