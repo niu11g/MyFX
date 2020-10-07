@@ -4,7 +4,7 @@
     <image data-id="themeA" style="width:750rpx;height:{{750/scales['themeA'].scale}}rpx" src="{{themeA.entrance_img}}" bindload="onTap"></image>
 
     <swiper class="swipe" indicator-dots="{{true}}" indicator-active-color="#157658" autoplay circular>
-      <block wx:for="{{bannerB.items}}" wx:for-item="item" wx:key="{{index}}">
+      <block wx:for="{{bannerB.items}}" wx:for-item="item" wx:key="index">
         <swiper-item>
           <image class="swipe" mode="widthFix" src="{{item.img}}"></image>
         </swiper-item>

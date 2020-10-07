@@ -2,7 +2,7 @@
   <l-icon wx:if="{{ frontIconName }}" size="{{frontIconSize}}" color="{{frontIconColor}}" name="{{ frontIconName }}" class="l-noticebar-icon" />
   <swiper autoplay vertical interval="{{4*speed}}" class="l-noticebar-content-wrap" wx:if="{{type=='swip'}}">
     <block wx:for="{{swipArr}}" wx:key="swip">
-      <swiper-item data-index="{{index}}" bindtap="onSwip">
+      <swiper-item data-index="index" bindtap="onSwip">
         {{item}}
       </swiper-item>
     </block>

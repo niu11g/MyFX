@@ -27,7 +27,7 @@
                 l-inactive-class="segment-item-inactive"
                 l-line-class="l-seg-line"
                 placement="left">
-            <bolck wx:for="{{roots}}" wx:key="{{index}}">
+            <bolck wx:for="{{roots}}" wx:key="index">
                 <l-segment-item key="{{item.id}}" tab="{{item.name}}"></l-segment-item>
             </bolck>
         </l-segment>

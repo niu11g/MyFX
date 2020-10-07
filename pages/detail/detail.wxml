@@ -32,7 +32,7 @@
   </view>
 
   <view class="detail-img-container">
-    <block wx:for="{{spu.spu_detail_img_list}}" wx:key="{{index}}">
+    <block wx:for="{{spu.spu_detail_img_list}}" wx:key="index">
       <image class="detail-img" mode="widthFix" src="{{item.img}}"></image>
 <!--      <image class="detail-img" src="{{item.img}}"></image>-->
     </block>

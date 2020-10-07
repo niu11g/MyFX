@@ -8,24 +8,11 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    cartItem:Object,
-    stock:{
-      type:Number,
-      value:Cart.SKU_MAX_COUNT
-    },
-    count:{
-      type:Number,
-      value:Cart.CART_ITEM_MAX_COUNT
-    }
-
+    cartItem:Object
   },
 
   observers:{
     cartItem:function(cartItem){
-      // console.log("observers-cartItem")
-      this.setData({
-        online:true
-      })
       // console.log(cartItem)
       if(!cartItem){
         return
@@ -34,15 +21,13 @@ Component({
       const discount = cartItem.sku.discount_price ? true : false
       const soldOut = Cart.isSoldOut(cartItem)
       const online = Cart.isOnline(cartItem)
-      const stock = cartItem.sku.stock
-      const count = cartItem.count
       this.setData({
         specStr,
         discount,
         soldOut,
         online,
-        stock,
-        count
+        stock:cartItem.sku.stock,
+        count:cartItem.count
       })
     }
 
@@ -55,7 +40,9 @@ Component({
     specStr: String,
     discount: Boolean,
     soldOut: Boolean,
-    online: Boolean
+    online: Boolean,
+    stock: Cart.SKU_MAX_COUNT,
+    skuCount: 1
   },
 
   /**

@@ -2,6 +2,8 @@
 import {Cart} from "../../model/cart";
 import {Calculator} from "../../model/calculator";
 
+const cart = new Cart()
+
 Page({
 
   /**
@@ -14,16 +16,21 @@ Page({
     totalPrice:0,
     totalSkuCount:0
   },
+  //页面是先执行onShow,后执行onLoad
   async onLoad(){
-    const cart = new Cart()
-    await cart.getAllSkuFromServer();
+    // const cart = new Cart()
+    const cartData = await cart.getAllSkuFromServer().items;
+    if (cartData){
+      this.setData({
+        cartItems:cartData
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面显示
    * 刷新频率高
    */
   onShow: function () {
-    const cart = new Cart()
     const cartItems = cart.getAllCartItemFromLocal().items;
     if(cart.isEmpty()){
       this.empty()
@@ -57,6 +64,15 @@ Page({
     this.setData({
         allChecked
     })
+  },
+  onSettle(event){
+    if(this.data.totalSkuCount <= 0){
+      return
+    }
+    wx.navigateTo({
+      url:'/pages/order/order'
+    })
+
   },
 
   onCheckAll(event){

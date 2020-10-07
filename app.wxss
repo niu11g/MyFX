@@ -6,12 +6,12 @@ Page{
 /*每次图标库中新添加图标后，都需重新生成代码，否则新加图标不生效*/
 @font-face {
   font-family: 'MyFx';  /* project id 2079236 */
-  src: url('//at.alicdn.com/t/font_2079236_oeyfecx1y.eot');
-  src: url('//at.alicdn.com/t/font_2079236_oeyfecx1y.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.woff') format('woff'),
-  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_2079236_oeyfecx1y.svg#MyFx') format('svg');
+  src: url('//at.alicdn.com/t/font_2079236_qj99cmjx5bj.eot');
+  src: url('//at.alicdn.com/t/font_2079236_qj99cmjx5bj.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2079236_qj99cmjx5bj.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2079236_qj99cmjx5bj.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2079236_qj99cmjx5bj.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2079236_qj99cmjx5bj.svg#MyFx') format('svg');
 }
 
 
@@ -35,5 +35,9 @@ Page{
 
 .l-icon-check:before{
   content: "\e612";
+}
+
+.l-icon-address1:before{
+  content: "\e632";
 }
 

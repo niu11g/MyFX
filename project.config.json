@@ -94,6 +94,14 @@
           "id": -1,
           "name": "搜索",
           "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "订单",
+          "pathName": "pages/order/order",
+          "query": "",
           "scene": null
         }
       ]

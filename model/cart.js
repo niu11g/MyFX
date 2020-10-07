@@ -44,13 +44,17 @@ class Cart{
     }
 
     _setLatestCartItem(item,serverData){
+        let removed = true
         for(let sku of serverData){
             if(sku.id === item.skuId){
+                removed = false;
                 item.sku = sku
                 break
             }
         }
-
+        if(removed){
+            item.sku.online = false
+        }
     }
 
     async getAllSkuFromServer(){
@@ -60,7 +64,10 @@ class Cart{
         }
         const skuIds = this.getSkuIds()
         const serverData = await Sku.getSkusByIds(skuIds)
-        console.log(serverData)
+        this._refreshByServerData(serverData)
+        this._refreshStorage()
+        return this._getCartData()
+
     }
 
     getSkuIds(){
