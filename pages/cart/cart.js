@@ -18,7 +18,7 @@ Page({
   },
   //页面是先执行onShow,后执行onLoad
   async onLoad(){
-    // const cart = new Cart()
+    const cart = new Cart()
     const cartData = await cart.getAllSkuFromServer().items;
     if (cartData){
       this.setData({
@@ -31,7 +31,9 @@ Page({
    * 刷新频率高
    */
   onShow: function () {
+    const cart = new Cart()
     const cartItems = cart.getAllCartItemFromLocal().items;
+    console.log(cartItems)
     if(cart.isEmpty()){
       this.empty()
     }

@@ -4,6 +4,7 @@ import {Banner} from "../../model/banner";
 import {Category} from "../../model/category";
 import {Activity} from "../../model/activity";
 import {SpuPaging} from "../../model/spu-paging";
+import {CouponCenterType} from "../../core/enum";
 
 Page({
     /**
@@ -22,6 +23,13 @@ Page({
         sPaging:null,
         loadingType:null
 
+    },
+
+    onGoToCoupons(event){
+        const name = event.currentTarget.dataset.aname
+        wx.navigateTo({
+            url:`/pages/coupon/coupon?name=${name}&type=${CouponCenterType.ACTIVITY}`
+        })
     },
 
     /**
@@ -74,7 +82,7 @@ Page({
         this.setData({
             themeA,
             themeE,
-            themeF, 
+            themeF,
             themeH,
             themeESpu,
             bannerB,
@@ -83,15 +91,15 @@ Page({
             activityD
         })
     },
-    onTap:  function(e){ 
+    onTap:  function(e){
       // console.log(e.target.dataset.id);
       let id = e.target.dataset.id;
-     
+
       let widthView = e.detail.width;
       let heightView = e.detail.height;
-      
-  
-      
+
+
+
       let scale = widthView / heightView ;
       let scales = this.data.scales;
       scales[id]={

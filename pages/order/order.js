@@ -1,4 +1,12 @@
 // pages/order/order.js
+
+import {Cart} from "../../model/cart";
+import {Sku} from "../../model/sku";
+import {OrderItem} from "../../model/order-item";
+import {Order} from "../../model/order";
+
+const cart = new Cart()
+
 Page({
 
   /**
@@ -13,7 +21,36 @@ Page({
    */
   onLoad: function (options) {
     let orderItems;
+    let localItemCount
+
+    const skuIds = cart.getCheckedSkuIds()
+    orderItems = this.getCartOrderItems(skuIds)
+    localItemCount = skuIds.length
+    const order = new Order(orderItems,localItemCount)
+    order.checkOrderIsOk()
   },
+
+  async getCartOrderItems(skuIds){
+    const skus = await Sku.getSkusByIds(skuIds)
+    const orderItems = this.packageOrderItems(skus)
+    return orderItems
+  },
+
+  packageOrderItems(skus){
+    skus.map(sku=>{
+      const count = cart.getSkuCountBySkuId(sku.id)
+      return new OrderItem(sku,count)
+    })
+  },
+
+  onChooseAddress(event){
+    const address = event.detail.address
+    this.setData({
+      address
+    })
+
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

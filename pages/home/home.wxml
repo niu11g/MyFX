@@ -13,7 +13,7 @@
     <!--    抽象节点必须使用自定义组件。slot不需要 直接page就能调用-->
     <s-category-grid grid="{{grid}}"></s-category-grid>
 
-    <image class="activity" mode="widthFix" src="{{activityD.entrance_img}}"></image>
+    <image data-aname="a-2" bind:tap="onGoToCoupons" class="activity" mode="widthFix" src="{{activityD.entrance_img}}"></image>
     <s-spu-scroll theme="{{themeE}}" spu-list="{{themeESpu}}" wx:if="{{themeE.online}}">
     </s-spu-scroll>
 

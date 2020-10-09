@@ -54,7 +54,7 @@
 }
 
 .sleeve {
-    font-family: sleeve !important;
+    font-family: MyFx !important;
     font-size: 36rpx;
     font-style: normal;
     color: #157658 !important;
