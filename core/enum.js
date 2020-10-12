@@ -37,11 +37,19 @@ const CouponCenterType={
     SPU_CATEGORY:'spu_category'
 }
 
+const CouponStatus = {
+    CAN_COLLECT: 0,
+    AVAILABLE: 1,
+    USED: 2,
+    EXPIRED: 3
+}
+
 export {
     CellStatus,
     ShoppingWay,
     SpuListType,
     AuthAddress,
     OrderExceptionType,
-    CouponCenterType
+    CouponCenterType,
+    CouponStatus
 }

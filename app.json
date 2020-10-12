@@ -74,6 +74,7 @@
     "s-empty": "/components/empty/index",
     "s-address": "/components/address/index",
     "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",
-    "s-order-sku-item": "/components/order-sku-item/index"
+    "s-order-sku-item": "/components/order-sku-item/index",
+    "s-coupon": "/components/coupon/index"
   }
 }

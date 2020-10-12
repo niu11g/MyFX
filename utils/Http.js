@@ -2,12 +2,15 @@ import {config} from "../config/config";
 import {promisic} from "./util";
 import {Token} from "../model/token";
 import {codes} from "../config/exception-config";
+import {HttpException} from "../core/http-exception";
 
 class Http {
     static async request({
                              url,
                              data,
-                             method = 'GET'
+                             method = 'GET',
+                             refetch = true,
+                             throwError = false
                          }) {
         let res;
         try {
@@ -23,6 +26,9 @@ class Http {
                 // success: res => callback(res.data)
             })
         }catch (e) {
+            if(throwError){
+                throw new HttpException(-1,codes[-1])
+            }
             Http.showError(-1)
         }
         const code = res.statusCode.toString()
@@ -39,6 +45,16 @@ class Http {
                     })
                 }
             }else{
+                if(throwError){
+                    throw new HttpException(res.data.code,res.data.message,code)
+                }
+                if(code === '404'){
+
+                    if(res.data.code !== undefined){
+                        return null
+                    }
+                    return res.data
+                }
                 const error_code = res.data.code;
                 Http.showError(error_code,res.data)
             }
