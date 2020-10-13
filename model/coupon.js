@@ -19,7 +19,7 @@ class Coupon {
 
     static async getCouponsByCategory(cid) {
         return await Http.request({
-            url: `coupon/by/category/${cid}`,
+            url: `coupon/by/Category/${cid}`,
         })
     }
 
@@ -31,7 +31,7 @@ class Coupon {
 
     static async getTop2CouponsByCategory(cid) {
         let coupons = await Http.request({
-            url: `coupon/by/category/${cid}`,
+            url: `coupon/by/Category/${cid}`,
         })
         if (coupons.length === 0) {
             const otherCoupons = await Coupon.getWholeStoreCoupons()

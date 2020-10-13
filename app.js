@@ -1,5 +1,6 @@
 //app.js
 import {Cart} from "./model/cart";
+import {Token} from "./model/token";
 
 App({
   onLaunch() {
@@ -12,6 +13,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+
       }
     })
     // 获取用户信息
@@ -41,6 +43,9 @@ App({
         index:2
       })
     }
+
+    const token = new Token()
+    token.verify()
   },
   globalData: {
     userInfo: null

@@ -4,6 +4,7 @@ import {Cart} from "../../model/cart";
 import {Sku} from "../../model/sku";
 import {OrderItem} from "../../model/order-item";
 import {Order} from "../../model/order";
+import {Coupon} from "../../model/coupon";
 
 const cart = new Cart()
 
@@ -19,15 +20,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     let orderItems;
     let localItemCount
-
     const skuIds = cart.getCheckedSkuIds()
-    orderItems = this.getCartOrderItems(skuIds)
+    console.log(skuIds)
+    orderItems = await this.getCartOrderItems(skuIds)
     localItemCount = skuIds.length
     const order = new Order(orderItems,localItemCount)
     order.checkOrderIsOk()
+
+    const mycoupons = await Coupon.getMySelfWithCategory()
+    console.log(mycoupons)
+    // this.setData({
+    //   coupons:mycoupons
+    // })
   },
 
   async getCartOrderItems(skuIds){
@@ -37,7 +44,7 @@ Page({
   },
 
   packageOrderItems(skus){
-    skus.map(sku=>{
+    return skus.map(sku=>{
       const count = cart.getSkuCountBySkuId(sku.id)
       return new OrderItem(sku,count)
     })

@@ -1,5 +1,7 @@
 // pages/coupon/coupon.js
 import {Activity} from "../../model/activity";
+import {CouponCenterType} from "../../core/enum";
+import {Coupon} from "../../model/coupon";
 
 Page({
 
@@ -16,12 +18,18 @@ Page({
   onLoad: async function (options) {
     const aName = options.name
     const type = options.type
-
+    const cid = options.cid
     let coupons
 
-    const activity = await Activity.getActivityWithCoupon(aName)
-
-    coupons = activity.coupons
+    if(type === CouponCenterType.ACTIVITY) {
+      const activity = await Activity.getActivityWithCoupon(aName)
+      coupons = activity.coupons
+    }
+    if(type === CouponCenterType.SPU_CATEGORY){
+      coupons = await Coupon.getCouponsByCategory(cid)
+      const wholeCoupons = await  Coupon.getWholeStoreCoupons()
+      coupons = coupons.concat(wholeCoupons)
+    }
     console.log(coupons)
     this.setData({
       coupons

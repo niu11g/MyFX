@@ -1,10 +1,11 @@
 // pages/detail/detail.js
 import {Spu} from "../../model/spu";
-import {ShoppingWay} from "../../core/enum";
+import {CouponCenterType, ShoppingWay} from "../../core/enum";
 import {SaleExplain} from "../../model/sale-explain";
 import {getWindowHeightRpx} from "../../utils/system";
 import {Cart} from "../../model/cart";
 import {CartItem} from "../../model/cart-Item";
+import {Coupon} from "../../model/coupon";
 
 Page({
 
@@ -25,13 +26,23 @@ Page({
     const spu = await Spu.getSpuById(pid);
     const explain = await SaleExplain.getFixed();
     const windowHeight = await getWindowHeightRpx();
+    console.log(spu)
+    const coupons = await Coupon.getTop2CouponsByCategory(spu.category_id)
     const h = windowHeight - 100;
     this.setData({
       spu,
       explain,
-      h
+      h,
+      coupons
     })
     this.updateCartItemCount()
+  },
+  onGoToCouponCenter(event) {
+    const type = CouponCenterType.SPU_CATEGORY
+    const cid = this.data.spu.category_id
+    wx.navigateTo({
+      url: `/pages/coupon/coupon?cid=${cid}&type=${type}`
+    })
   },
   onGotoHome(event){
     wx.switchTab({
