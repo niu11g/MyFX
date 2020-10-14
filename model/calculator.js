@@ -31,6 +31,7 @@ class Calculator{
             partTotalPrice = accMultiply(cartItem.count,cartItem.sku.price)
         }
         this.totalPrice = accAdd(this.totalPrice,partTotalPrice)
+        console.log(this.totalPrice)
         this.totalSkuCount += cartItem.count
     }
 }

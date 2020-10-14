@@ -76,6 +76,7 @@
     "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",
     "s-order-sku-item": "/components/order-sku-item/index",
     "s-coupon": "/components/coupon/index",
-    "s-coupon-mini": "/components/coupon-mini/index"
+    "s-coupon-mini": "/components/coupon-mini/index",
+    "s-coupon-picker":"/components/coupon-picker/index"
   }
 }

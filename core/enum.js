@@ -1,26 +1,57 @@
-
 const CellStatus = {
-    FORBIDDEN:'forbidden',
-    SELECTED:'selected',
-    WAITING:'waiting'
+    FORBIDDEN: 'forbidden',
+    SELECTED: 'selected',
+    WAITING: 'waiting'
 }
 
 const ShoppingWay = {
-    CART:'cart',
-    BUY:'buy'
+    CART: 'cart',
+    BUY: 'buy'
+}
+
+const CouponCenterType = {
+    ACTIVITY: 'activity',
+    SPU_CATEGORY: 'spu_category'
 }
 
 const SpuListType = {
-    THEME:'theme',
-    ROOT_CATEGORY:'root_category',
-    SUB_CATEGORY:'sub_category',
-    LATEST:'latest'
+    THEME: 'theme',
+    ROOT_CATEGORY: 'root_category',
+    SUB_CATEGORY: 'sub_category',
+    LATEST: 'latest'
+}
+
+const CouponType = {
+    FULL_MINUS: 1,
+    FULL_OFF: 2,
+    NO_THRESHOLD_MINUS: 3
 }
 
 const AuthAddress = {
-    NOT_AUTH:'not_auth',
-    DENY:'deny',
-    AUTHORIZED:'authorized'
+    DENY: 'deny',
+    NOT_AUTH: 'not_auth',
+    AUTHORIZED: 'authorized'
+}
+
+const CouponOperate = {
+    PICK: 'pick',
+    UNPICK: 'unpick'
+}
+
+
+const OrderStatus = {
+    ALL: 0,
+    UNPAID: 1,
+    PAID: 2,
+    DELIVERED: 3,
+    FINISHED: 4,
+    CANCELED: 5,
+}
+
+const BannerItemType = {
+  SPU: 1,
+  THEME: 2,
+  SPU_LIST: 3
 }
 
 const OrderExceptionType = {
@@ -30,11 +61,6 @@ const OrderExceptionType = {
     SOLD_OUT: 'sold_out',
     NOT_ON_SALE: 'not_on_sale',
     EMPTY: 'empty'
-}
-
-const CouponCenterType={
-    ACTIVITY:'activity',
-    SPU_CATEGORY:'spu_category'
 }
 
 const CouponStatus = {
@@ -51,5 +77,9 @@ export {
     AuthAddress,
     OrderExceptionType,
     CouponCenterType,
-    CouponStatus
+    CouponStatus,
+    CouponType,
+    CouponOperate,
+    OrderStatus,
+    BannerItemType
 }

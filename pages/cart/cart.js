@@ -48,6 +48,7 @@ Page({
   refreshCartData(){
     const cart = new Cart()
     const checkItems = cart.getCheckedItems()
+    console.log(checkItems)
     const calculator = new Calculator(checkItems)
     calculator.calc()
     this.setCalcData(calculator)
