@@ -5,8 +5,9 @@ import {Order} from "../../model/order";
 import {Coupon} from "../../model/coupon";
 import {CouponBO} from "../../model/coupon-bo";
 import {CouponOperate, ShoppingWay} from "../../core/enum";
+import {OrderPost} from "../../model/order-post";
+import {Payment} from "../../model/payment";
 // import {showToast} from "../../utils/ui";
-// import {OrderPost} from "../../models/order-post";
 // import {Payment} from "../../models/payment";
 
 const cart = new Cart()
@@ -75,93 +76,96 @@ Page({
         })
     },
 
-    // async onSubmit(event) {
-    //     if (!this.data.address) {
-    //         showToast('请选择收获地址')
-    //         return
-    //     }
+    async onSubmit(event) {
+        if (!this.data.address) {
+            showToast('请选择收获地址')
+            return
+        }
 
-    //     this.disableSubmitBtn()
-    //     const order = this.data.order
+        this.disableSubmitBtn()
+        const order = this.data.order
 
-    //     const orderPost = new OrderPost(
-    //         this.data.totalPrice,
-    //         this.data.finalTotalPrice,
-    //         this.data.currentCouponId,
-    //         order.getOrderSkuInfoList(),
-    //         this.data.address
-    //     )
+        const orderPost = new OrderPost(
+            this.data.totalPrice,
+            this.data.finalTotalPrice,
+            this.data.currentCouponId,
+            order.getOrderSkuInfoList(),
+            this.data.address
+        )
 
-    //     const oid = await this.postOrder(orderPost)
-    //     if (!oid) {
-    //         this.enableSubmitBtn()
-    //         return
-    //     }
+        const oid = await this.postOrder(orderPost)
+        if (!oid) {
+            this.enableSubmitBtn()
+            return
+        }
 
-    //     if (this.data.shoppingWay === ShoppingWay.CART) {
-    //         cart.removeCheckedItems()
-    //     }
+        if (this.data.shoppingWay === ShoppingWay.CART) {
+            cart.removeCheckedItems()
+        }
 
-    //     // 支付 小程序/前端 支付
-    //     // 支付参数 调用 API
+        // 支付 小程序/前端 支付
+        // 支付参数 调用 API
 
-    //     // 支付 wx.requestPayment(params)
-    //     // API => params
+        // 支付 wx.requestPayment(params)
+        // API => params
 
-    //     wx.lin.showLoading({
-    //         type: "flash",
-    //         fullScreen: true,
-    //         color: "#157658"
-    //     })
+        wx.lin.showLoading({
+            type: "flash",
+            fullScreen: true,
+            color: "#157658"
+        })
 
-    //     const payParams = await Payment.getPayParams(oid)
+        const payParams = await Payment.getPayParams(oid)
 
-    //     if (!payParams) {
-    //         return
-    //     }
+        if (!payParams) {
+            return
+        }
 
-    //     try {
-    //         const res = await wx.requestPayment(payParams)
-    //         wx.redirectTo({
-    //             url: `/pages/pay-success/pay-success?oid=${oid}`
-    //         })
-    //     } catch (e) {
-    //         wx.redirectTo({
-    //             url: `/pages/my-order/my-order?key=${1}`
-    //         })
-    //     }
+        try {
+            const res = await wx.requestPayment(payParams)
 
-    //     // wx.requestPayment()
+            console.log(res)
+            wx.redirectTo({
+                url: `/pages/pay-success/pay-success?oid=${oid}`
+            })
+        } catch (e) {
 
-    // },
+            wx.redirectTo({
+                url: `/pages/my-order/my-order?key=${1}`
+            })
+        }
 
-    // async postOrder(orderPost) {
-    //     try {
-    //         const serverOrder = await Order.postOrderToServer(orderPost)
-    //         if (serverOrder) {
-    //             return serverOrder.id
-    //         }
-    //         // throwError
-    //     } catch (e) {
-    //         // code
-    //         this.setData({
-    //             orderFail: true,
-    //             orderFailMsg: e.message
-    //         })
-    //     }
-    // },
+        // wx.requestPayment()
 
-    // disableSubmitBtn() {
-    //     this.setData({
-    //         submitBtnDisable: true
-    //     })
-    // },
+    },
 
-    // enableSubmitBtn() {
-    //     this.setData({
-    //         submitBtnDisable: false
-    //     })
-    // },
+    async postOrder(orderPost) {
+        try {
+            const serverOrder = await Order.postOrderToServer(orderPost)
+            if (serverOrder) {
+                return serverOrder.id
+            }
+            // throwError
+        } catch (e) {
+            // code
+            this.setData({
+                orderFail: true,
+                orderFailMsg: e.message
+            })
+        }
+    },
+
+    disableSubmitBtn() {
+        this.setData({
+            submitBtnDisable: true
+        })
+    },
+
+    enableSubmitBtn() {
+        this.setData({
+            submitBtnDisable: false
+        })
+    },
 
     onChooseAddress(event) {
         const address = event.detail.address

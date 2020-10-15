@@ -27,6 +27,9 @@ Component({
           address,
           hasChosen:true
         })
+        this.triggerEvent('address',{
+          address
+        })
       }
     }
   },

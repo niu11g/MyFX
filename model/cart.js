@@ -59,6 +59,17 @@ class Cart{
         return this._getCartData()
     }
 
+    removeCheckedItems(){
+        const cartData = this._getCartData()
+        console.log(cartData)
+        for(let i = 0;i < cartData.items.length;i++){
+            if(cartData.items[i].checked){
+                cartData.items.splice(i,1)
+            }
+        }
+        this._refreshStorage()
+    }
+
     _refreshByServerData(serverData){
         const cartData = this._getCartData()
         cartData.items.forEach(item=>{

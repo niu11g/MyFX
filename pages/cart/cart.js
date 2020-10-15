@@ -1,6 +1,7 @@
 // pages/cart/cart.js
 import {Cart} from "../../model/cart";
 import {Calculator} from "../../model/calculator";
+import {ShoppingWay} from "../../core/enum";
 
 const cart = new Cart()
 
@@ -73,7 +74,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url:'/pages/order/order'
+      url:`/pages/order/order?way=${ShoppingWay.CART}`
     })
 
   },

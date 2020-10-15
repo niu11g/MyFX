@@ -8,7 +8,9 @@
     "pages/search/search",
     "pages/spu-list/spu-list",
     "pages/order/order",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/order-detail/order-detail",
+    "pages/pay-success/pay-success"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -77,6 +79,7 @@
     "s-order-sku-item": "/components/order-sku-item/index",
     "s-coupon": "/components/coupon/index",
     "s-coupon-mini": "/components/coupon-mini/index",
-    "s-coupon-picker":"/components/coupon-picker/index"
+    "s-coupon-picker": "/components/coupon-picker/index",
+    "l-status-show": "/miniprogram_npm/lin-ui/status-show/index"
   }
 }

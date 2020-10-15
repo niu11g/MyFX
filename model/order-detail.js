@@ -1,0 +1,8 @@
+
+class OrderDetail{
+
+}
+
+export {
+    OrderDetail
+}

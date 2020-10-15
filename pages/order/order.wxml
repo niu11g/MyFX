@@ -40,3 +40,11 @@
         提交订单
     </l-button>
 </view>
+
+<l-status-show show="{{!isOk}}" describe="订单中包含有售罄/下架/超出数量的商品" type="data"></l-status-show>
+
+<l-dialog content-color="#333333" type="alert" title="订单生成失败" l-confirm-class="dialog-confirm" show="{{orderFail}}" content="{{orderFailMsg}}">
+
+</l-dialog>
+
+<l-loading></l-loading>
