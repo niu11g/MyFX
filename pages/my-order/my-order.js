@@ -1,5 +1,5 @@
 // pages/my-order/my-order.js
-import {Order} from "../../models/order";
+import {Order} from "../../model/order";
 import {OrderStatus} from "../../core/enum";
 
 Page({

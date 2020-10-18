@@ -1,5 +1,5 @@
 // components/order-sku-panel/index.js
-import {parseSpecValue, parseSpecValueArray} from "../../utils/sku";
+import {parseSpecValue} from "../../utils/sku";
 
 Component({
   /**

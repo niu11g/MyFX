@@ -10,7 +10,8 @@
     "pages/order/order",
     "pages/coupon/coupon",
     "pages/order-detail/order-detail",
-    "pages/pay-success/pay-success"
+    "pages/pay-success/pay-success",
+    "pages/my-coupon/my-coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -80,6 +81,11 @@
     "s-coupon": "/components/coupon/index",
     "s-coupon-mini": "/components/coupon-mini/index",
     "s-coupon-picker": "/components/coupon-picker/index",
-    "l-status-show": "/miniprogram_npm/lin-ui/status-show/index"
+    "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
+    "s-my-banner": "/components/my-banner/index",
+    "s-my-order-panel": "/components/my-order-panel/index",
+    "l-list":"/miniprogram_npm/lin-ui/list/index",
+    "l-avatar":"/miniprogram_npm/lin-ui/avatar/index",
+    "l-countdown":"/miniprogram_npm/lin-ui/countdown/index"
   }
 }
